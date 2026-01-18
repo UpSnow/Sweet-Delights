@@ -28,6 +28,7 @@
   --cor-texto-2: #FFFFFF;
   --cor-texto-3: #803225;
   --cor-botao: #D96A88;
+  --cor-botao-secundario: #028643;
 
   /* ========== ESPAÇAMENTOS (rem) ========== */
   --esp-xxs: 0.25rem; /* 4px */
@@ -64,8 +65,8 @@
   --shadow-lg: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 
   /* ========== ALTURAS PADRÃO ========== */
-  --altura-input: 3rem;
-  --altura-botao: 3rem;
+  --altura-input: 2.5rem;
+  --altura-botao: 2.5rem;
 
   /* ========== LINE HEIGHT ========== */
   --line-sm: 1.2;
