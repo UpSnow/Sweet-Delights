@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.login-text {
+  font-size: var(--font-sm);
+  color: var(--cor-texto);
+  padding: var(--esp-xs) 0;
+}
+
+.login-link {
+  color: var(--cor-botao);
+  font-weight: var(--peso-medio);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login-link:hover {
+  filter: brightness(0.95);
+}
