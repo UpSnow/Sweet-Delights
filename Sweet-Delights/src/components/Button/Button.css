@@ -5,7 +5,7 @@
   gap: var(--esp-xs);
 
   height: var(--altura-botao);
-  padding: 0 var(--esp-lg);
+  padding: 0 var(--esp-md);
 
   font-family: var(--fonte-primaria);
   font-size: var(--font-md);
@@ -16,12 +16,14 @@
 
   border: none;
   transition: all 0.2s ease;
+  
 }
 
 /* ===== BOTÃO PRINCIPAL ===== */
 .btn--primary {
   background-color: var(--cor-botao);
   color: var(--cor-texto-2);
+  
 }
 
 .btn--primary:hover {
@@ -41,8 +43,23 @@
 
 /* ===== ÍCONE ===== */
 .btn__icon {
+  display: flex;             /* 🔥 importante */
+  align-items: center;       /* 🔥 centraliza o ícone */
+  justify-content: center;
+  line-height: 0;      
+     
   width: 1.25rem;
   height: 1.25rem;
+  
+}
+.btn__icon svg {
+  display: block;            /* 🔥 remove espaço extra */
+}
+.btn__icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ===== DISABLED ===== */

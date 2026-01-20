@@ -4,20 +4,21 @@ import "./Button.css";
 
 const Button = ({
   children,
-  variant = "primary", // primary | secondary
+  variant = "primary",
   icon,
   type = "button",
   onClick,
   disabled = false,
+  className = "",
 }) => {
   return (
     <button
-      className={`btn btn--${variant}`}
+      className={`btn btn--${variant} ${className}`}
       type={type}
       onClick={onClick}
       disabled={disabled}
     >
-      {icon && <img src={icon} alt="" className="btn__icon" />}
+      {icon && <span className="btn__icon">{icon}</span>}
       <span className="btn__text">{children}</span>
     </button>
   );
