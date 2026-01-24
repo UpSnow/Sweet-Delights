@@ -27,15 +27,8 @@
   --cor-texto: #000000;
   --cor-texto-2: #FFFFFF;
   --cor-texto-3: #803225;
-<<<<<<< HEAD
   --cor-botao: #D96A88;
   --cor-botao-secundario: #028643;
-=======
-  --cor-backgroundDetails: #E15477;
-  --cor-botao: #D96A88;
-  --cor-botao-secundario: #028643;
-  --cor-botao-terciario: #FFF8EB;
->>>>>>> feat/product-details-page
 
   /* ========== ESPAÇAMENTOS (rem) ========== */
   --esp-xxs: 0.25rem; /* 4px */
@@ -93,7 +86,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-<<<<<<< HEAD
   
 }
 
@@ -103,11 +95,6 @@ html, body {
   height: 100%;
 }
 
-=======
-}
-
-/* ================= BODY ================= */
->>>>>>> feat/product-details-page
 html {
   font-size: 16px; /* 1rem = 16px */
 }

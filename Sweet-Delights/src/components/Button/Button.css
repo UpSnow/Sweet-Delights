@@ -5,11 +5,7 @@
   gap: var(--esp-xs);
 
   height: var(--altura-botao);
-<<<<<<< HEAD
   padding: 0 var(--esp-md);
-=======
-  padding: 0 var(--esp-lg);
->>>>>>> feat/product-details-page
 
   font-family: var(--fonte-primaria);
   font-size: var(--font-md);
@@ -20,20 +16,14 @@
 
   border: none;
   transition: all 0.2s ease;
-<<<<<<< HEAD
   
-=======
->>>>>>> feat/product-details-page
 }
 
 /* ===== BOTÃO PRINCIPAL ===== */
 .btn--primary {
   background-color: var(--cor-botao);
   color: var(--cor-texto-2);
-<<<<<<< HEAD
   
-=======
->>>>>>> feat/product-details-page
 }
 
 .btn--primary:hover {
@@ -53,7 +43,6 @@
 
 /* ===== ÍCONE ===== */
 .btn__icon {
-<<<<<<< HEAD
   display: flex;             /* 🔥 importante */
   align-items: center;       /* 🔥 centraliza o ícone */
   justify-content: center;
@@ -71,10 +60,6 @@
   height: 18px;
   object-fit: contain;
   display: block;
-=======
-  width: 1.25rem;
-  height: 1.25rem;
->>>>>>> feat/product-details-page
 }
 
 /* ===== DISABLED ===== */
@@ -82,12 +67,62 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
-<<<<<<< HEAD
-=======
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-xs);
+
+  height: var(--altura-botao);
+  padding: 0 var(--esp-lg);
+
+  font-family: var(--fonte-primaria);
+  font-size: var(--font-md);
+  font-weight: var(--peso-medio);
+
+  border-radius: var(--radius-md);
+  cursor: pointer;
+
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* ===== BOTÃO PRINCIPAL ===== */
+.btn--primary {
+  background-color: var(--cor-botao);
+  color: var(--cor-texto-2);
+}
+
+.btn--primary:hover {
+  filter: brightness(0.95);
+}
+
+/* ===== BOTÃO SECUNDÁRIO ===== */
+.btn--secondary {
+  background-color: var(--cor-botao-secundario);
+  color: var(--cor-texto-2);
+  
+}
+
+.btn--secondary:hover {
+  filter: brightness(0.95);
+}
+
+/* ===== ÍCONE ===== */
+.btn__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ===== DISABLED ===== */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 /* ===== BOTÃO TERCIARIO ===== */
 .btn--tertiary {
     color: var(--cor-texto);
     background-color: var(--cor-botao-terciario);
 }
->>>>>>> feat/product-details-page
