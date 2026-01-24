@@ -44,3 +44,6 @@
     display: flex;
     gap: 0.5rem;
 }
+.layout-page-content {
+    flex: 1;
+}

@@ -1,36 +1,59 @@
 import React from "react";
-import './LayoutPage.css'
+import './LayoutPage.css';
 import Button from "../Button/Button";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
-import r from "../../assets/logo.png"
-import Login from "../../pages/Login/Login";
-import { useNavigate } from "react-router-dom";
-const LayoutPage = ({ children }) => {
-    const navigate = useNavigate();
-    return (
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import r from "../../assets/logo.png";
 
+const LayoutPage = () => {
+    const navigate = useNavigate();
+
+    return (
         <div className="layout-page-container">
+            
+            {/* Sidebar */}
             <div className="layout-page-sidebar">
+                
+                {/* Logo */}
                 <div className="layout-page-logo">
-                    <img src="/src/assets/logo.png" alt="Logo"/>
+                    <img src={r} alt="Logo" />
                     <p>Sweet Delights</p>
                 </div>
+
+                {/* Menu */}
                 <div className="layout-page-menu">
-                    <a href="/Categorias" >Categorias </a>
-                    <a href="/products" >Destaques </a>
-                    <a href="/orders" >Promoçoes </a>
-                </div>
-                <div className="layout-page-user-buttons">
-                    <Button icon={<FaUserCircle />} onClick={() => navigate('/login')} variant="primary">Login</Button>
-                    <Button icon={<FaShoppingCart />} variant="secondary">| Itens</Button>
+                    <Link to="/Categorias">Categorias</Link>
+                    <Link to="/products">Destaques</Link>
+                    <Link to="/orders">Promoções</Link>
                 </div>
 
+                {/* User Buttons */}
+                <div className="layout-page-user-buttons">
+                    <Button 
+                        icon={<FaUserCircle />} 
+                        onClick={() => navigate('/login')} 
+                        variant="primary"
+                    >
+                        Login
+                    </Button>
+
+                    <Button icon={<FaShoppingCart />} variant="secondary">
+                        | Itens
+                    </Button>
+                </div>
             </div>
-            {children}
+
+            {/* Área principal onde as rotas filhas serão renderizadas */}
+            <div className="layout-page-content">
+                <Outlet />
+            </div>
+
+            {/* Footer / onda */}
             <div className="wave-container">
-                
+                {/* Aqui pode colocar o SVG da onda ou outro conteúdo */}
             </div>
         </div>
-    )
+    );
 }
+
 export default LayoutPage;
