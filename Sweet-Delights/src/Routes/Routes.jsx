@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login/Login";
@@ -18,3 +19,17 @@ const AppRoutes = () => {
 
 export default AppRoutes
 
+=======
+import { Routes, Route } from "react-router-dom";
+import Login from "../pages/Login/Login.jsx";
+import Details from "../pages/DetailsProduct/Details.jsx";
+
+export default function AppRoutes() {
+  return (
+    <Routes>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/details" element={<Details/>} />
+    </Routes>
+  );
+}
+>>>>>>> feat/product-details-page

@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 /* ================= CONTAINER ================= */
 .login-container {
+=======
+.container {
+>>>>>>> feat/product-details-page
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
   min-height: 100vh;
   width: 100%;
   padding: 1.5rem;
@@ -36,6 +41,16 @@
 }
 
 /* ================= LINK ================= */
+=======
+  
+}
+.login-text {
+  font-size: var(--font-sm);
+  color: var(--cor-texto);
+  padding: var(--esp-xs) 0;
+}
+
+>>>>>>> feat/product-details-page
 .login-link {
   color: var(--cor-botao);
   font-weight: var(--peso-medio);
@@ -46,6 +61,7 @@
 .login-link:hover {
   filter: brightness(0.95);
 }
+<<<<<<< HEAD
 
 /* ================= RESPONSIVO ================= */
 @media (max-width: 768px) {
@@ -54,3 +70,5 @@
     height: 220px;
   }
 }
+=======
+>>>>>>> feat/product-details-page
