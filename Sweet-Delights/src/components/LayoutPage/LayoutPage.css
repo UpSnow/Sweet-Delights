@@ -1,10 +1,10 @@
 .layout-page-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* ocupa a tela toda */
     width: 100%;
     background-color: var(--cor-fundo);
-    
+    position: relative; /* importante para o wave */
 }
 
 .layout-page-sidebar { 
@@ -44,6 +44,24 @@
     display: flex;
     gap: 0.5rem;
 }
+/*Estuda essa parte*/
 .layout-page-content {
     flex: 1;
+    position: relative;
+    z-index: 5;
+    padding: 2rem;
+}
+
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none; /* não atrapalha cliques */
+}
+
+.wave-container img {
+    width: 100%;
+    display: block;
 }

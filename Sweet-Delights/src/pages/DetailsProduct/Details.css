@@ -1,15 +1,17 @@
 .container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
+  padding: 3rem 1rem;
 }
+
 
 .product {
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
+ justify-content: center;
+  
 }
 
 .product img {
@@ -40,13 +42,7 @@
   transform: translateY(-6px) rotate(0.6deg);
 }
 
-section {
-  min-height: 100vh;
-  background-image: url(../../assets/img/Background.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
+
 
 @media (max-width: 768px) {
   .product {

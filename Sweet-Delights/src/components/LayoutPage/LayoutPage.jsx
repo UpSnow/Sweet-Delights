@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import r from "../../assets/logo.png";
+import Background from "../../assets/img/Background.png"
 
 const LayoutPage = () => {
     const navigate = useNavigate();
@@ -51,6 +52,7 @@ const LayoutPage = () => {
             {/* Footer / onda */}
             <div className="wave-container">
                 {/* Aqui pode colocar o SVG da onda ou outro conteúdo */}
+                <img src={Background} alt="" />
             </div>
         </div>
     );
