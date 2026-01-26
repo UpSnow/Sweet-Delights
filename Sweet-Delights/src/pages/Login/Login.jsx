@@ -2,18 +2,15 @@ import React from "react";
 import "./Login.css";
 import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
+import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
+import Logo from "../../assets/logo.png";
 
 const Login = () => {
   return (
-    <div className="login-container">
-      <img
-        src="/src/assets/logo.png"
-        alt="Logo"
-        className="login-logo"
-      />
-
-      <h1 className="login-title">Login</h1>
-
+    <LayoutStripes
+      image={Logo}
+      title="Login"
+    >
       <Input
         label="Email"
         type="email"
@@ -36,7 +33,7 @@ const Login = () => {
           Cadastre-se
         </a>
       </p>
-    </div>
+    </LayoutStripes>
   );
 };
 

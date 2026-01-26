@@ -7,7 +7,7 @@
     position: relative; /* importante para o wave */
 }
 
-.layout-page-sidebar { 
+.layout-page-header { 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,6 +24,7 @@
     height: 40px;
     width: 40px;
     margin-right: 0.5rem;
+    
 }
 .layout-page-logo p{
     color: var(--cor-texto-2);
@@ -49,7 +50,7 @@
     flex: 1;
     position: relative;
     z-index: 5;
-    padding: 2rem;
+    
 }
 
 .wave-container {
@@ -64,4 +65,5 @@
 .wave-container img {
     width: 100%;
     display: block;
+    object-fit: contain;
 }

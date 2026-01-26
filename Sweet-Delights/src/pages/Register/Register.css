@@ -1,0 +1,48 @@
+/* ================= FORM GRID ================= */
+.register-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 🔥 duas colunas */
+  gap: 1rem;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 1.5rem;
+  justify-items: center;
+}
+
+/* Faz inputs ocuparem 100% da célula */
+.register-form-grid > * {
+  width: 100%;
+}
+
+/* ================= BOTÃO ================= */
+.register-button {
+  max-width: 480px;
+  margin-bottom: 1rem;
+}
+
+
+/* ================= TEXTO ================= */
+.register-text {
+  font-size: var(--font-sm);
+  color: var(--cor-texto);
+  margin-top: 1rem;
+}
+
+/* ================= LINK ================= */
+.register-link {
+  color: var(--cor-botao);
+  font-weight: var(--peso-medio);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  filter: brightness(0.95);
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 768px) {
+  .register-form-grid {
+    grid-template-columns: 1fr; /* 🔥 uma coluna no mobile */
+  }
+}

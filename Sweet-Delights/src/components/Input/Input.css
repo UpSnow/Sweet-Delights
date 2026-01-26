@@ -5,7 +5,9 @@
   gap: var(--esp-xxs);
   margin: 6px ;
   width: 100%;
-  max-width: 25%;
+  max-width: 300px;
+  justify-content: center;
+  
   
   
   
@@ -31,6 +33,7 @@
   border-radius: var(--radius-sm);
   background-color: var(--cor-detalhe);
   transition: border 0.2s;
+  
   
 
 

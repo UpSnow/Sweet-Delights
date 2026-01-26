@@ -12,8 +12,8 @@ const LayoutPage = () => {
     return (
         <div className="layout-page-container">
             
-            {/* Sidebar */}
-            <div className="layout-page-sidebar">
+            {/* header */}
+            <div className="layout-page-header">
                 
                 {/* Logo */}
                 <div className="layout-page-logo">
