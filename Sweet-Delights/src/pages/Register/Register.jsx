@@ -4,6 +4,7 @@ import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
 import Logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -40,9 +41,9 @@ const Register = () => {
 
       <p className="register-text">
         Já tem uma conta?{" "}
-        <a href="/login" className="register-link">
+        <Link to="/login" className="register-link">
           Entrar
-        </a>
+        </Link >
       </p>
     </LayoutStripes>
   );

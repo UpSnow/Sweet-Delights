@@ -1,0 +1,97 @@
+.container-home {
+    width: 100%;
+    height: calc(100vh - 100px) ;
+    overflow-y: auto ;
+    
+}
+.container-home .home-texto-h2{
+    margin: 0px 0px 15px 15px;
+
+}
+
+
+.header-home {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-home img {
+    width: 300px;
+    margin: 0 100px;
+}
+
+.header-home-texto {
+    background-color: var(--cor-botao-terciario);
+    display: flex;
+    flex-direction: column;
+    padding: 6.5rem;
+    border-radius: 120px 0 0 0;
+    width: 100%;
+    max-width: 1000px;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-texto-3);
+}
+
+.header-home-texto h1 {
+    font-size: 3rem;
+    padding-bottom: var(--esp-xs);
+}
+
+.home-content {
+    margin: 20px 0px;
+    display: flex;
+    background-color: var(--cor-secundaria);
+    justify-content: center;
+
+
+}
+
+.home-content h2 {
+    margin-top: 10px;
+    color: var(--cor-texto-2);
+    font-weight: var(--peso-bold);
+    font-size: var( --font-lg);
+
+}
+
+.home-product {
+    display: flex;
+    gap: 100px;
+    padding: 40px 40px 40px 0px;
+}
+
+.home-categories{
+    display: flex;
+    background-color: var(--cor-detalhe-2);
+    justify-content:space-around;
+    align-items: center;
+    margin-bottom: 50px;
+    
+    
+}
+.home-categories .divider {
+  display: inline-block;
+  width: 1px;          /* realmente fino */
+  height: 3rem;        /* mesma altura visual */
+  background-color: #d8d7d7;
+  margin: 0 12px;
+}
+.home-product-2{
+    margin: 30px 0px 50px 0px;
+    display: flex;
+    justify-content: space-around;
+}
+.home-search{
+    background-color: var(--cor-detalhe-2);
+    height: 300px;
+    margin: 30px 0px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--cor-texto-2);
+}

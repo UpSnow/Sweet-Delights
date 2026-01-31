@@ -1,11 +1,11 @@
 import React from "react";
 import './LayoutPage.css';
 import Button from "../Button/Button";
-import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import r from "../../assets/logo.png";
+import Logo from "../../assets/logo.png";
 import Background from "../../assets/img/Background.png"
-
+import { FaBasketShopping } from "react-icons/fa6";
 const LayoutPage = () => {
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const LayoutPage = () => {
                 
                 {/* Logo */}
                 <div className="layout-page-logo">
-                    <img src={r} alt="Logo" />
+                    <img src={Logo} alt="Logo" />
                     <p>Sweet Delights</p>
                 </div>
 
@@ -38,7 +38,7 @@ const LayoutPage = () => {
                         Login
                     </Button>
 
-                    <Button icon={<FaShoppingCart />} variant="secondary">
+                    <Button icon={<FaBasketShopping />} variant="secondary">
                         | Itens
                     </Button>
                 </div>

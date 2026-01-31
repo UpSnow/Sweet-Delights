@@ -4,7 +4,7 @@ import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
 import Logo from "../../assets/logo.png";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <LayoutStripes
@@ -29,9 +29,9 @@ const Login = () => {
 
       <p className="login-text">
         Não tem uma conta?{" "}
-        <a href="/cadastro" className="login-link">
+        <Link to="/cadastro" className="login-link">
           Cadastre-se
-        </a>
+        </Link >
       </p>
     </LayoutStripes>
   );
