@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css"
 import logo from "../../assets/logo.png"
 import ProductCard from "../../components/ProductCard/ProductCard";
-
+import { Link } from "react-router-dom"
 const products = [
     {
         id: 1,
@@ -34,13 +34,13 @@ const products = [
 const Home = () => {
     return (
         <div className="container-home">
-            <div className="header-home">
+            <header className="header-home">
                 <img src={logo} />
                 <div className="header-home-texto">
                     <h1>Sweet Delights</h1>
                     <p>Brownies, Cookie, Trufas e muito mais</p>
                 </div>
-            </div>
+            </header>
             <div className="home-content">
                 <h2>Popular</h2>
                 <div className="home-product">
@@ -79,12 +79,38 @@ const Home = () => {
             </div>
             <div className="home-search">
                 <h1>
-                     Um doce é pequeno, mas a 
-                    <br />felicidade que traz é gigante.
-                    </h1>
+                    Um doce é pequeno, mas a
+                    <br /> felicidade que traz é gigante.
+                </h1>
                 <p>Pesquise seu doce favorito</p>
-
             </div>
+            <footer className="footer">
+                <div className="footer-brand">
+                    <h2>Cantinho Doce</h2>
+                    <p>Doces feitos com carinho 🍰</p>
+                </div>
+
+                <div className="footer-columns">
+                    <div>
+                        <h4>Company</h4>
+                        <Link to="/about">About</Link>
+                        <Link to="/contact">Contact</Link>
+                        <Link to="/careers">Careers</Link>
+                    </div>
+
+                    <div>
+                        <h4>Quick Links</h4>
+                        <Link to="/orders">Order Tracking</Link>
+                        <Link to="/faq">FAQs</Link>
+                    </div>
+
+                    <div>
+                        <h4>Legal</h4>
+                        <Link to="/terms">Terms & Conditions</Link>
+                        <Link to="/privacy">Privacy Policy</Link>
+                    </div>
+                </div>
+            </footer>
 
 
 
