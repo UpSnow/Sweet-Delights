@@ -1,7 +1,7 @@
 /* global.css */
 
 /* ================= FONTES ================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 
 :root {
   /* ========== FONTES ========== */
@@ -79,6 +79,8 @@
   --letter-tight: -0.02em;
   --letter-normal: 0;
   --letter-wide: 0.05em;
+
+   --wave-height: 280px;
 }
 
 /* ================= GLOBAL RESET ================= */
@@ -88,6 +90,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* ================= BODY ================= */
@@ -98,6 +101,7 @@ html {
 body {
   font-family: var(--fonte-primaria);
   background-color: var(--cor-fundo);
+  
  
 }
 
