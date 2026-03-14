@@ -2,10 +2,10 @@
 .register-form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 🔥 duas colunas */
-  gap: 1rem;
+  gap: 2rem;
   width: 100%;
   max-width: 480px;
-  margin-bottom: 1.5rem;
+ 
   justify-items: center;
 }
 
@@ -16,8 +16,10 @@
 
 /* ================= BOTÃO ================= */
 .register-button {
-  max-width: 480px;
-  margin-bottom: 1rem;
+  max-width: 150px;
+  margin-top: 1.5rem;
+  grid-column: 1 / -1;      /* ocupa as duas colunas */
+  justify-self: center;     /* centraliza no grid */
 }
 
 
@@ -25,7 +27,7 @@
 .register-text {
   font-size: var(--font-sm);
   color: var(--cor-texto);
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 /* ================= LINK ================= */

@@ -34,7 +34,7 @@
   background-color: var(--cor-detalhe);
   transition: border 0.2s;
   
-  
+ 
 
 
    
@@ -44,4 +44,14 @@
   outline: none;
   border-color: var(--cor-botao);
   box-shadow: var(--shadow-sm);
+}
+
+.input-error {
+  border: 2px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
 }
