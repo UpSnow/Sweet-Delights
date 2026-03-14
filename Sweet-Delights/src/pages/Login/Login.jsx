@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
@@ -6,6 +6,21 @@ import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 const Login = () => {
+
+const[login, setLogin]= useState({
+  email: "",
+  senha: ""
+})
+
+
+const{erros, setErros}= useState({})
+
+
+
+
+
+
+
   return (
     <LayoutStripes
       image={Logo}

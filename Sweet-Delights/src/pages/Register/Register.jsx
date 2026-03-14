@@ -5,7 +5,7 @@ import Button from "../../components/Button/Button";
 import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-import validarFormulario from "../../utils/validarFormulario";
+import { validarCampo, validarFormulario } from "../../utils/validarFormulario";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -17,37 +17,30 @@ const Register = () => {
 
   const [erros, setErros] = useState({})
 
-  const [touched, setTouched] = useState({})
 
 
-  function handlechange(e) {
+  const handlechange = (e) => {
 
-    const { name, value } = e.target // qual é a diferença entre {} [] ou sem nada?
+    const { name, value } = e.target
 
     const novosDados = {
       ...form,
-      [name]: value // por que tem que usar o [] nome name já no value não precisa?
+      [name]: value
     }
     setForm(novosDados)
 
 
-    const errosValidados = validarFormulario(novosDados)
-    setErros(errosValidados) // como isso funciona altomatico?
-  }
+    const errosValidados = validarCampo(name, novosDados)
 
-  function handleBlur(e) { // me explique como funciona e o que faz e para que server ?
-
-    const { name } = e.target
-
-    setTouched({
-      ...touched,
-      [name]: true
-    })
+    setErros((prev) => ({
+      ...prev,
+      [name]: errosValidados
+    }))
   }
 
   const handleSubmit = (e) => {
 
-    e.preventDefault()// pra que isso?
+    e.preventDefault()
     const errosValidados = validarFormulario(form)
 
     if (Object.keys(errosValidados).length > 0) { // o que essa parte faz? o que seria essa codição?
@@ -56,11 +49,8 @@ const Register = () => {
     }
     clean()
 
-
-
-
-
   }
+  
   const clean = () => {
 
     setForm({
@@ -83,8 +73,7 @@ const Register = () => {
           value={form.nome}
           onChange={handlechange}
           placeholder="Seu nome completo"
-          onBlur={handleBlur}
-          erro={touched.nome && erros.nome} // o que seria o onBlur?
+          erro={erros.nome}
         />
 
         <Input
@@ -95,8 +84,7 @@ const Register = () => {
           value={form.email}
           onChange={handlechange}
           placeholder="seu@email.com"
-          onBlur={handleBlur}
-          erro={touched.email && erros.email}
+          erro={erros.email}
         />
 
         <Input
@@ -107,8 +95,7 @@ const Register = () => {
           value={form.senha}
           onChange={handlechange}
           placeholder="********"
-          onBlur={handleBlur}
-          erro={touched.senha && erros.senha}
+          erro={erros.senha}
         />
 
         <Input
@@ -119,8 +106,7 @@ const Register = () => {
           value={form.confirmarSenha}
           onChange={handlechange}
           placeholder="********"
-          onBlur={handleBlur}
-          erro={touched.confirmarSenha && erros.confirmarSenha}
+          erro={erros.confirmarSenha}
         />
 
 

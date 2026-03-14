@@ -1,29 +1,49 @@
 
+const validadores = {
+  nome: validarNome,
+  email: validarEmail,
+  senha: validarSenha,
+  confirmarSenha: validarConfirmacaoSenha
+}
 
+// valida apenas um campo
+export function validarCampo(name, dados){
 
-// eu quero entender como funciona o erro 
-function validarFormulario(dados) {
+  const erros = {}
 
-    const erros = {}
+  const validador = validadores[name]
 
+  if(validador){
+    validador(dados, erros)
+  }
 
-    validarNome(dados, erros)
-    validarEmail(dados, erros)
-    validarSenha(dados, erros)
-    validarConfirmacaoSenha(dados, erros)
-
-    return erros
-
+  return erros[name]
 
 }
 
-function validarNome(dados, erros) {
-    if (!dados.nome) {
-        erros.nome = "Nome é obrigatório"
-    }
-    else if (dados.nome.length < 3) {
-        erros.nome = "Nome precisa ter pelo menos 3 letras"
-    }
+// valida o formulário inteiro
+export function validarFormulario(dados){
+
+  const erros = {}
+
+  Object.keys(validadores).forEach((campo)=>{
+    validadores[campo](dados, erros)
+  })
+
+  return erros
+}
+
+
+
+
+function validarNome(dados, erros){
+
+  if(!dados.nome){
+    erros.nome = "Nome é obrigatório"
+  }
+  else if(dados.nome.length < 3){
+    erros.nome = "Nome precisa ter pelo menos 3 letras"
+  }
 
 }
 
@@ -49,43 +69,41 @@ function validarSenha(dados, erros){
     return
   }
 
-  else if(dados.senha.length < 8){
+  if(dados.senha.length < 8){
     erros.senha = "A senha precisa ter pelo menos 8 caracteres"
     return
   }
 
-  else if(!/[A-Z]/.test(dados.senha)){
+  if(!/[A-Z]/.test(dados.senha)){
     erros.senha = "A senha precisa ter uma letra maiúscula"
     return
   }
 
- else if(!/[a-z]/.test(dados.senha)){
+  if(!/[a-z]/.test(dados.senha)){
     erros.senha = "A senha precisa ter uma letra minúscula"
     return
   }
 
- else if(!/[0-9]/.test(dados.senha)){
+  if(!/[0-9]/.test(dados.senha)){
     erros.senha = "A senha precisa ter um número"
     return
   }
 
-  else if(!/[!@#$%^&*(),.?":{}|<>]/.test(dados.senha)){
+  if(!/[!@#$%^&*(),.?":{}|<>]/.test(dados.senha)){
     erros.senha = "A senha precisa ter um caractere especial"
   }
 
 }
 
-function validarConfirmacaoSenha(dados, erros) {
+function validarConfirmacaoSenha(dados, erros){
 
-    if (!dados.confirmarSenha) {
-        erros.confirmarSenha = "Confirme sua senha"
-        return
-    }
+  if(!dados.confirmarSenha){
+    erros.confirmarSenha = "Confirme sua senha"
+    return
+  }
 
-    else if (dados.senha !== dados.confirmarSenha) {
-        erros.confirmarSenha = "As senhas não coincidem"
-    }
+  if(dados.senha !== dados.confirmarSenha){
+    erros.confirmarSenha = "As senhas não coincidem"
+  }
 
 }
-
-export default validarFormulario
