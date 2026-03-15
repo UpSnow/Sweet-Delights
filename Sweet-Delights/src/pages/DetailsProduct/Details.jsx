@@ -3,7 +3,7 @@ import "./Details.css"
 
 function Details(){
     return(
-        <section>
+        <section className="backgroundImg">
             <div className="container">
                     <div className="product">
                         <div className="productCard">

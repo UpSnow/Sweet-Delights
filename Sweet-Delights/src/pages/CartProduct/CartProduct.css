@@ -1,0 +1,15 @@
+
+.card-product-cart {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-product {
+    width: 100px;
+    height: 100px;
+
+}
+
+.teste {
+    display: flex;
+}
