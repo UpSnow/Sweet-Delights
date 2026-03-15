@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
-
+import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
+import Logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 const Login = () => {
+
+const[login, setLogin]= useState({
+  email: "",
+  senha: ""
+})
+
+
+const{erros, setErros}= useState({})
+
+
+
+
+
+
+
   return (
-    <div className="login-container">
-      <img
-        src="/src/assets/logo.png"
-        alt="Logo"
-        className="login-logo"
-      />
-
-      <h1 className="login-title">Login</h1>
-
+    <LayoutStripes
+      image={Logo}
+      title="Login"
+    >
       <Input
         label="Email"
         type="email"
@@ -32,11 +44,11 @@ const Login = () => {
 
       <p className="login-text">
         Não tem uma conta?{" "}
-        <a href="/cadastro" className="login-link">
+        <Link to="/cadastro" className="login-link">
           Cadastre-se
-        </a>
+        </Link >
       </p>
-    </div>
+    </LayoutStripes>
   );
 };
 

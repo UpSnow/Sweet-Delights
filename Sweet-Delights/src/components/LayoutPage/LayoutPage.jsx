@@ -1,36 +1,61 @@
 import React from "react";
-import './LayoutPage.css'
+import './LayoutPage.css';
 import Button from "../Button/Button";
-import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
-import r from "../../assets/logo.png"
-import Login from "../../pages/Login/Login";
-import { useNavigate } from "react-router-dom";
-const LayoutPage = ({ children }) => {
+import { FaUserCircle } from "react-icons/fa";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import Logo from "../../assets/logo.png";
+import Background from "../../assets/img/Background.png"
+import { FaBasketShopping } from "react-icons/fa6";
+const LayoutPage = () => {
     const navigate = useNavigate();
-    return (
 
+    return (
         <div className="layout-page-container">
-            <div className="layout-page-sidebar">
+            
+            {/* header */}
+            <div className="layout-page-header">
+                
+                {/* Logo */}
                 <div className="layout-page-logo">
-                    <img src="/src/assets/logo.png" alt="Logo"/>
+                    <img src={Logo} alt="Logo" />
                     <p>Sweet Delights</p>
                 </div>
+
+                {/* Menu */}
                 <div className="layout-page-menu">
-                    <a href="/Categorias" >Categorias </a>
-                    <a href="/products" >Destaques </a>
-                    <a href="/orders" >Promoçoes </a>
-                </div>
-                <div className="layout-page-user-buttons">
-                    <Button icon={<FaUserCircle />} onClick={() => navigate('/login')} variant="primary">Login</Button>
-                    <Button icon={<FaShoppingCart />} variant="secondary">| Itens</Button>
+                    <Link to="/Categorias">Categorias</Link>
+                    <Link to="/products">Destaques</Link>
+                    <Link to="/orders">Promoções</Link>
                 </div>
 
+                {/* User Buttons */}
+                <div className="layout-page-user-buttons">
+                    <Button 
+                        icon={<FaUserCircle />} 
+                        onClick={() => navigate('/login')} 
+                        variant="primary"
+                    >
+                        Login
+                    </Button>
+
+                    <Button icon={<FaBasketShopping />} variant="secondary">
+                        | Itens
+                    </Button>
+                </div>
             </div>
-            {children}
+
+            {/* Área principal onde as rotas filhas serão renderizadas */}
+            <div className="layout-page-content">
+                <Outlet />
+            </div>
+
+            {/* Footer / onda */}
             <div className="wave-container">
-                
+                {/* Aqui pode colocar o SVG da onda ou outro conteúdo */}
+                <img src={Background} alt="" />
             </div>
         </div>
-    )
+    );
 }
+
 export default LayoutPage;
