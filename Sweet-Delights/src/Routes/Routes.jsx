@@ -6,8 +6,14 @@ import Login from "../pages/Login/Login";
 import Details from "../pages/DetailsProduct/Details";
 import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Homen";
+import CartProduct from "../pages/CartProduct/CartProduct"
+import Checkout from "../pages/Checkout/Checkout";
 
 import LayoutPage from "../components/LayoutPage/LayoutPage";
+
+
+import CartProvider from "../context/CartContext";
+
 
 
 
@@ -15,18 +21,23 @@ import LayoutPage from "../components/LayoutPage/LayoutPage";
 const AppRoutes = () => {
     return (
         <Router>
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/cadastro" element={<Register />} />
+            <CartProvider>
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/cadastro" element={<Register />} />
 
-                <Route  element={<LayoutPage />}>
-                <Route path="/" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/details" element={<Details />} />
 
-                </Route>
+                    <Route element={<LayoutPage />}>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/details" element={<Details />} />
+                        <Route path="/carrinho" element={<CartProduct />} />
+                        <Route path="/checkout" element={<Checkout/>} />
 
-            </Routes>
+                    </Route>
+
+                </Routes>
+            </CartProvider>
         </Router>
     )
 }

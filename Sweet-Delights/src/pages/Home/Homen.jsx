@@ -3,6 +3,11 @@ import "./Home.css"
 import logo from "../../assets/logo.png"
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { Link } from "react-router-dom"
+
+
+import { useCart } from "../../context/CartContext";
+
+
 const products = [
     {
         id: 1,
@@ -32,6 +37,9 @@ const products = [
 ];
 
 const Home = () => {
+
+    const {addToCart}= useCart();
+
     return (
         <div className="container-home">
             <header className="header-home">
@@ -50,7 +58,7 @@ const Home = () => {
                             name={product.name}
                             price={product.price}
                             image={product.image}
-                            onAdd={() => console.log("Adicionar:", product.name)}
+                            onAdd={() => addToCart(product)}
                         />
                     )}
                 </div>
@@ -73,7 +81,7 @@ const Home = () => {
                         name={product.name}
                         price={product.price}
                         image={product.image}
-                        onAdd={() => console.log("Adicionar:", product.name)}
+                        onAdd={() => addToCart(product)}
                     />
                 )}
             </div>

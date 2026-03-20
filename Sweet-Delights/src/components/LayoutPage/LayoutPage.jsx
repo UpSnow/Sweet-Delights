@@ -6,7 +6,12 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import Background from "../../assets/img/Background.png"
 import { FaBasketShopping } from "react-icons/fa6";
+
+
+
+import { useCart } from "../../context/CartContext";
 const LayoutPage = () => {
+    const {totalItems} = useCart()
     const navigate = useNavigate();
 
     return (
@@ -16,7 +21,7 @@ const LayoutPage = () => {
             <div className="layout-page-header">
                 
                 {/* Logo */}
-                <div className="layout-page-logo">
+                <div className="layout-page-logo" onClick={()=> navigate("/home")}>
                     <img src={Logo} alt="Logo" />
                     <p>Sweet Delights</p>
                 </div>
@@ -38,8 +43,8 @@ const LayoutPage = () => {
                         Login
                     </Button>
 
-                    <Button icon={<FaBasketShopping />} variant="secondary">
-                        | Itens
+                    <Button icon={<FaBasketShopping />} onClick={()=> navigate('/carrinho')}variant="secondary">
+                        | {totalItems} Itens
                     </Button>
                 </div>
             </div>

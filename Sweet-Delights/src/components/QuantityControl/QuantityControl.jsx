@@ -1,6 +1,6 @@
 
 
-function QuantityControl({min = 1, max = 10, value, onChange}){
+function QuantityControl({min = 0, max = 10, value, onChange}){
     const decrease = () => {
         if (value > min ) onChange(value - 1)
     }
