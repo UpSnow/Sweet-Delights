@@ -1,54 +1,55 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, useCallback } from "react";
 
 const CartContext = createContext();
 
 export default function CartProvider({ children }) {
 
-    const [cart, setCart] = useState(()=>{
+    const [cart, setCart] = useState(() => {
         const stored = localStorage.getItem("cart");
-        return stored ? JSON.parse(stored): []; /// preciso entender como funciona
+        return stored ? JSON.parse(stored) : []; /// preciso entender como funciona
     });
 
-    useEffect(() =>{
+    useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]) // preciso entender o por que de usar useEffectr
 
-    function addToCart(product) { // tenho que entender como essa logica funciona
+
+
+    // 2. Envolva a função com useCallback
+    const addToCart = useCallback((product) => {
         setCart((prevCart) => {
             const productExists = prevCart.find(item => item.id === product.id);
 
-
             if (productExists) {
                 return prevCart.map(item =>
-                    item.id === product.id ? { ...item, quantity: item.quantity + 1 }
+                    item.id === product.id
+                        ? { ...item, quantity: item.quantity + 1 }
                         : item
                 );
             }
-            return [...prevCart, { ...product, quantity: 1 }] // e para que isso server
+            return [...prevCart, { ...product, quantity: 1 }];
         });
-    }
+    }, []); // 3. Array vazio! A função nasce uma vez e nunca mais muda de "endereço".
+
+    const removeFromCart = useCallback((id) => {
+        setCart((prevCart) => prevCart.filter(item => item.id !== id));
+    }, []); // 4. Também estável, não depende de variáveis externas, só do 'setCart'
 
 
-    function removeFromCart(id) {
-        setCart((prevCart) => prevCart.filter(item => item.id !== id))
-    }
-
-
-    function updateQuantity(id, newQuantity) {
+    const updateQuantity = useCallback((id, newQuantity) => {
         if (newQuantity <= 0) {
-            removeFromCart(id)
+            removeFromCart(id); // Aqui tem um detalhe importante!
             return;
         }
         setCart((prevCart) =>
-            prevCart.map(item => item.id === id ? { ...item, quantity: newQuantity }
-                : item
-
+            prevCart.map(item =>
+                item.id === id ? { ...item, quantity: newQuantity } : item
             )
         );
-    }
-    function clearCart() {
-        setCart([])
-    }
+    }, [removeFromCart]); // Adicionamos 'removeFromCart' como dependência
+    const clearCart = useCallback(() => {
+        setCart([]);
+    }, []); // Array vazio porque o setCart nunca muda
 
 
     const total = cart.reduce((acc, item) => {
@@ -60,9 +61,15 @@ export default function CartProvider({ children }) {
     }, 0);
 
 
-    const value = useMemo(() => ({ // para o useMemo server
-        cart, addToCart, removeFromCart, updateQuantity, total, clearCart, totalItems
-    }), [cart])
+    const value = useMemo(() => ({
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        total,
+        clearCart,
+        totalItems
+    }), [cart, addToCart, removeFromCart, updateQuantity, total, clearCart, totalItems]);
 
     return (
         <CartContext.Provider value={value} >{children} </CartContext.Provider>
