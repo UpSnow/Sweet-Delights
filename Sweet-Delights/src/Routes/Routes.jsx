@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Homen";
 import CartProduct from "../pages/CartProduct/CartProduct"
 import Checkout from "../pages/Checkout/Checkout";
+import Address from "../pages/Addresses/Address";
 
 import LayoutPage from "../components/LayoutPage/LayoutPage";
 
@@ -33,6 +34,7 @@ const AppRoutes = () => {
                         <Route path="/details" element={<Details />} />
                         <Route path="/carrinho" element={<CartProduct />} />
                         <Route path="/checkout" element={<Checkout/>} />
+                        <Route path="/address" element={<Address/>} />
 
                     </Route>
 

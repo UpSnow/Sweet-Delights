@@ -55,7 +55,7 @@ function CartProduct() {
                         🧹 Limpar Carrinho
                     </button>
 
-                    <button onClick={()=>navigate("/checkout")} style={{ marginLeft: "10px" }}>
+                    <button onClick={()=>navigate("/address")} style={{ marginLeft: "10px" }}>
                         💳 Finalizar Pedido
                     </button>
 

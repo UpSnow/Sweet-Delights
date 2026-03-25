@@ -5,18 +5,19 @@ const Input = ({ label, erro, ...props }) => {
   return (
     <div className="input-wrapper">
 
-      {label && ( 
-        <label className="input-label" htmlFor={props.id}> 
+      {label && (
+        <label className="input-label" htmlFor={props.id}>
           {label}
         </label>
       )}
 
       <input
         {...props} // me explique melhor essa parte 
-        className={erro ? "input-field input-error" : "input-field"}
+        className={` input-field ${erro ? "input-error" : ""} ${props.readOnly ? "input-readonly" : ""}
+  `}
       />
 
-      {erro && ( 
+      {erro && (
         <p className="error-message">
           {erro}
         </p>
