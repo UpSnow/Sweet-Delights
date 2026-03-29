@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState, useCallback } 
 
 const CartContext = createContext();
 
-export default function CartProvider({ children }) {
+export  function CartProvider({ children }) {
 
     const [cart, setCart] = useState(() => {
         const stored = localStorage.getItem("cart");

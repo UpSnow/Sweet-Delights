@@ -8,6 +8,7 @@ import { validarCampoAddress, validarFormularioAddress } from "../../utils/valid
 
 import { formatCep } from "../../utils/validarEndereco/masksAddress";
 import { buscarCEP } from "../../api/cep"
+import BackButton from "../../components/BackButton/BackButton";
 
 const Address = () => {
   const navigate = useNavigate();
@@ -145,6 +146,7 @@ const Address = () => {
 
   return (
     <div>
+      <BackButton variant="2"/>
       <h1>Endereço</h1>
 
       <form onSubmit={handleSubmit}>

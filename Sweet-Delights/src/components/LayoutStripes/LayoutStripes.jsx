@@ -13,7 +13,7 @@ const LayoutStripes = ({ image, title, children }) => {
 
         {title && <h1 className="layout-title-stripes">{title}</h1>}
 
-        {/* Aqui entram Login, Cadastro, etc */}
+        
         {children}
       </div>
 

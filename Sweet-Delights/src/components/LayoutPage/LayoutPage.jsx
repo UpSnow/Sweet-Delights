@@ -10,18 +10,33 @@ import { FaBasketShopping } from "react-icons/fa6";
 
 
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
+
 const LayoutPage = () => {
-    const {totalItems} = useCart()
+    const { totalItems } = useCart()
     const navigate = useNavigate();
+
+    const { user, logout, isAuthenticated } = useAuth();
+
+
+    const handleUserClick = () => {
+        if (isAuthenticated) {
+            logout();
+            navigate("/")
+        } else {
+            navigate('/login')
+        }
+
+    }
 
     return (
         <div className="layout-page-container">
-            
+
             {/* header */}
             <div className="layout-page-header">
-                
+
                 {/* Logo */}
-                <div className="layout-page-logo" onClick={()=> navigate("/home")}>
+                <div className="layout-page-logo" onClick={() => navigate("/home")}>
                     <img src={Logo} alt="Logo" />
                     <p>Sweet Delights</p>
                 </div>
@@ -29,21 +44,23 @@ const LayoutPage = () => {
                 {/* Menu */}
                 <div className="layout-page-menu">
                     <Link to="/Categorias">Categorias</Link>
-                    <Link to="/products">Destaques</Link>
-                    <Link to="/orders">Promoções</Link>
+                    <Link to="/home#destaques">Destaques</Link>
+                    <Link to="/promocao">Promoções</Link>
                 </div>
 
                 {/* User Buttons */}
                 <div className="layout-page-user-buttons">
-                    <Button 
-                        icon={<FaUserCircle />} 
-                        onClick={() => navigate('/login')} 
+                    <Button
+                        icon={<FaUserCircle />}
+                        onClick={handleUserClick}
                         variant="primary"
                     >
-                        Login
+                        {isAuthenticated && user
+                            ? `Sair (${user.nome})`
+                            : "Login"}
                     </Button>
 
-                    <Button icon={<FaBasketShopping />} onClick={()=> navigate('/carrinho')}variant="secondary">
+                    <Button icon={<FaBasketShopping />} onClick={() => navigate('/carrinho')} variant="secondary">
                         | {totalItems} Itens
                     </Button>
                 </div>

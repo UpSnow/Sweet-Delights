@@ -1,8 +1,8 @@
-import React from "react";
+import { useEffect } from "react";
 import "./Home.css"
 import logo from "../../assets/logo.png"
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { Link } from "react-router-dom"
+import { Link, useLocation,useNavigate } from "react-router-dom"
 
 
 import { useCart } from "../../context/CartContext";
@@ -38,7 +38,21 @@ const products = [
 
 const Home = () => {
 
-    const {addToCart}= useCart();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (location.hash === "#destaques") {
+            const section = document.getElementById("destaques");
+
+            section?.scrollIntoView({ behavior: "smooth" });
+
+            // 🔥 remove o #destaques da URL
+            navigate(location.pathname, { replace: true }); // o que é pathname?
+        }
+    }, [location, navigate]);
+
+    const { addToCart } = useCart();
 
     return (
         <div className="container-home">
@@ -69,11 +83,11 @@ const Home = () => {
                 <span className="divider"></span>
                 <p>Mousse</p>
                 <span className="divider"></span>
-                <p>Mousse</p>
+                <p>Trufas</p>
                 <span className="divider"></span>
-                <p>Mais...</p>
+                <Link to="/categorias" className="link-mais">Mais...</Link>
             </div>
-            <h2 className="home-texto-h2">Mais Vendidos da Semana</h2>
+            <h2 className="home-texto-h2" id="destaques">Mais Vendidos da Semana</h2>
             <div className="home-product-2">
                 {products.map((product) =>
                     <ProductCard

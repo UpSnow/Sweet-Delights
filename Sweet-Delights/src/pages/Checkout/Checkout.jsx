@@ -6,6 +6,8 @@ import {  useNavigate } from "react-router-dom";
 import Input from "../../components/Input/Input"
 import Button from "../../components/Button/Button"
 
+import BackButton from "../../components/BackButton/BackButton";
+
 
 import { formatCVV, formatCardNumber, formatExpiry, formatName } from "../../utils/validarCartao/mascara";
 import { validarCampoCard, validarFormularioCard } from "../../utils/validarCartao/validarCartao";
@@ -111,6 +113,7 @@ const Checkout = () => {
 
     return (
         <div className="">
+            <BackButton variant="2"/>
             <h1>Checkout</h1>
 
             <h3>Total: R$ {total.toFixed(2)}</h3>

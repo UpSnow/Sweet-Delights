@@ -1,0 +1,15 @@
+
+
+
+.promocoes-page {
+  padding: 20px;
+}
+.promocoes-page h1 {
+  padding: 20px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 60px;
+}

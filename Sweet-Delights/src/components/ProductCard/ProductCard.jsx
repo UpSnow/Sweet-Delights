@@ -1,9 +1,14 @@
 import "./ProductCard.css";
 import { FaPlus } from "react-icons/fa";
 
-export default function ProductCard({ image, name, price, onAdd }) {
+import { useNavigate } from "react-router-dom";
+
+ const ProductCard=({ image, name, price, onAdd,oldPrice, id }) => {
+
+  const navigate = useNavigate();
+
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={()=> navigate(`/details/${id}`)}>
 
       <div className="image-container">
         <img src={image} alt={name} />
@@ -19,12 +24,23 @@ export default function ProductCard({ image, name, price, onAdd }) {
           </button>
         </div>
 
-        <span className="product-price">
+        <div>
+          {oldPrice && (
+            <span className="old-price">
+              R$ {oldPrice.toFixed(2).replace(".",",")}
+            </span>
+          )}
+          <span className="product-price">
           {price.toFixed(2).replace(".", ",")}
         </span>
+
+        </div>
+
+        
 
       </div>
 
     </div>
   );
 }
+export default ProductCard

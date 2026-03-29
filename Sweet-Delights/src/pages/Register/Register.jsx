@@ -4,10 +4,21 @@ import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
 import Logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+
+import BackButton from "../../components/BackButton/BackButton";
+
+import { Link, useNavigate } from "react-router-dom";
 import { validarCampo, validarFormulario } from "../../utils/validarFormulario";
 
+import { useAuth } from "../../context/AuthContext";
+
 const Register = () => {
+
+  const navigate = useNavigate();
+
+
+  const {register} = useAuth();
+
   const [form, setForm] = useState({
     nome: "",
     email: "",
@@ -47,7 +58,17 @@ const Register = () => {
       setErros(errosValidados)
       return
     }
+
+    const result = register(form)
+
+    if(!result.success){
+      setErros({ email: result.message })
+      return
+    }
+
     clean()
+
+    navigate("/login")
 
   }
   
@@ -63,7 +84,12 @@ const Register = () => {
 
 
   return (
+
+    <div>
+      <BackButton/>
+    
     <LayoutStripes image={Logo} title="Cadastro">
+      
       <form className="register-form-grid" onSubmit={handleSubmit} >
         <Input
           id="nome"
@@ -124,6 +150,7 @@ const Register = () => {
         </Link >
       </p>
     </LayoutStripes>
+    </div>
   );
 }
 export default Register;

@@ -1,32 +1,52 @@
-import Button from "../../components/Button/Button"
-import "./Details.css"
+import { useParams } from "react-router-dom";
+import"./Details.css"
+import Button from "../../components/Button/Button";
 
-function Details(){
-    return(
-        <section className="backgroundImg">
-            <div className="container">
-                    <div className="product">
-                        <div className="productCard">
-                            <img src="" alt="" />
-                            <div className="productCard2">
-                                <h5>Brownie</h5>
-                                <p>5,00</p>
-                                <Button variant="tertiary">Carrinho de Compras</Button>                                
-                            </div>
-                        </div>
-                        <div className="productDetails">
-                            <h1>Brownie</h1>
-                            <h2>Descrição</h2>
-                            <p>Brownie de chocolate com uma textura macia e fudgy.</p>
-                            <h2>Ingredientes</h2>
-                            <p>Chocolate, açúcar, farinha, ovos, manteiga, cacau em pó</p>
-                            <h2>Alégicos</h2>
-                            <p>Contém: Ovos, Trigo</p>
-                        </div>                     
-                    </div>
-            </div>
-        </section>
-    )
+import { useCart } from "../../context/CartContext";
+
+
+
+const Details = () => {
+  const { id } = useParams(); // o que esse useParams faz?
+
+  const { addToCart } = useCart();
+
+  const produtos = [
+    {
+      id: 1,
+      name: "Bolo de Chocolate",
+      price: 20,
+      description: "Delicioso bolo com cobertura cremosa",
+      image: "/images/bolo.jpg",
+    },
+    {
+      id: 2,
+      name: "Cupcake",
+      price: 8,
+      description: "Cupcake fofinho com recheio",
+      image: "/images/cupcake.jpg",
+    },
+  ];
+
+  const produto = produtos.find((p) => p.id === Number(id)); // ele só da certo de encontrar um com id igual é iiso?
+
+
+  if (!produto) return <p>Produto não encontrado</p>;
+
+  return (
+    <div className="details-page">
+
+      <img src={produto.image} alt={produto.name} />
+
+      <h1>{produto.name}</h1>
+
+      <p>{produto.description}</p>
+
+      <h2>R$ {produto.price.toFixed(2)}</h2>
+
+      <Button onClick={() => addToCart(produto)}>Adicionar ao carrinho</Button>
+
+    </div>
+  );
 }
-
 export default Details

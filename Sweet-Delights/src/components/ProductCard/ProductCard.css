@@ -60,6 +60,13 @@
   background-color: #3f1580;
 }
 
+.old-price {
+  text-decoration: line-through;
+  color: #be0f0f;
+  font-size: 0.875rem;
+  margin-right: 5px;
+}
+
 .product-price {
   font-weight: bold;
   font-size: 0.875rem;

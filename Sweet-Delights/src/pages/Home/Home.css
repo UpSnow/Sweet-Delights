@@ -81,6 +81,19 @@
   background-color: #d8d7d7;
   margin: 0 12px;
 }
+
+.link-mais {
+  text-decoration: none;   /* tira o sublinhado */
+  color: #000000;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.link-mais:hover {
+  color: #ff1f4b;
+  text-decoration: underline;
+}
 .home-product-2{
     margin: 30px 0px 50px 0px;
     display: flex;
