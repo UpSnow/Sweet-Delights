@@ -7,7 +7,7 @@
   padding: var(--esp-xl);
   min-height: 100vh;
   background-color: var(--cor-fundo);
-  max-width: 1000px;
+  
   margin: 0 auto;
 }
 
@@ -17,6 +17,9 @@
   gap: var(--esp-xxl);
   margin-top: var(--esp-lg);
   width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .details-image {

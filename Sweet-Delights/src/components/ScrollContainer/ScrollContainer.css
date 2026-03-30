@@ -14,31 +14,37 @@
 .scroll-wrapper {
   display: flex;
   gap: 2rem;
-  padding: 20px; /* Importante para o efeito de 'subida' do seu ProductCard */
+  padding: 20px;
   
-  /* Comportamento de Scroll */
+  
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   scroll-behavior: smooth;
   
-  /* Garante que o scroll funcione no toque */
   -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
 }
 
-/* Forçar os filhos (Cards) a não encolherem */
+.scroll-wrapper.active {
+  cursor: grabbing;
+  scroll-behavior: auto; /* Desativa o smooth para o arraste ser instantâneo */
+}
+
+
 .scroll-wrapper > * {
   flex-shrink: 0;
 }
 
-/* Customização da Barra (opcional - você já tem uma legal) */
+
 .scroll-wrapper::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 .scroll-wrapper::-webkit-scrollbar-thumb {
   background: var(--cor-botao);
   border-radius: 10px;
 }
 .scroll-wrapper::-webkit-scrollbar-track {
-  background: transparent; /* Fica invisível se não estiver usando */
+  background: transparent; 
 }
