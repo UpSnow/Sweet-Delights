@@ -1,36 +1,91 @@
 import React from "react";
-import './LayoutPage.css'
+import './LayoutPage.css';
 import Button from "../Button/Button";
-import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
-import r from "../../assets/logo.png"
-import Login from "../../pages/Login/Login";
-import { useNavigate } from "react-router-dom";
-const LayoutPage = ({ children }) => {
-    const navigate = useNavigate();
-    return (
+import { FaUserCircle } from "react-icons/fa";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import Logo from "../../assets/logo.png";
+import Background from "../../assets/img/Background.png"
+import { FaBasketShopping } from "react-icons/fa6";
 
+
+
+import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
+
+const LayoutPage = () => {
+    const { totalItems } = useCart()
+    const navigate = useNavigate();
+
+    const { user, logout, isAuthenticated } = useAuth();
+
+
+    const handleUserClick = () => {
+        if (isAuthenticated) {
+            logout();
+            navigate("/")
+        } else {
+            navigate('/login')
+        }
+
+    }
+
+    return (
         <div className="layout-page-container">
-            <div className="layout-page-sidebar">
-                <div className="layout-page-logo">
-                    <img src="/src/assets/logo.png" alt="Logo"/>
+
+           
+            <div className="layout-page-header">
+
+                
+                <div className="layout-page-logo" onClick={() => navigate("/home")}>
+                    <img src={Logo} alt="Logo" />
                     <p>Sweet Delights</p>
                 </div>
+
+                
                 <div className="layout-page-menu">
-                    <a href="/Categorias" >Categorias </a>
-                    <a href="/products" >Destaques </a>
-                    <a href="/orders" >Promoçoes </a>
-                </div>
-                <div className="layout-page-user-buttons">
-                    <Button icon={<FaUserCircle />} onClick={() => navigate('/login')} variant="primary">Login</Button>
-                    <Button icon={<FaShoppingCart />} variant="secondary">| Itens</Button>
+                    <Link to="/Categorias">Categorias</Link>
+                    <Link to="/home#destaques">Destaques</Link>
+                    <Link to="/promocao">Promoções</Link>
                 </div>
 
+                
+                <div className="layout-page-user-buttons">
+                    <Button
+
+                        onClick={handleUserClick}
+                        variant="primary"
+                    >
+                        {isAuthenticated && user
+                            ? `Sair (${user.nome})`
+                            : "Login"}
+                    </Button>
+
+                    <Button icon={<FaBasketShopping />} onClick={() => navigate('/carrinho')} variant="secondary">
+                        | {totalItems} Itens
+                    </Button>
+                    {isAuthenticated ? (
+                        <Link to="/perfil" className="profile-icon-link">
+                            <div className="profile-icon-container">
+                                <FaUserCircle />
+                            </div>
+                        </Link>
+                    ) : null}
+
+                </div>
             </div>
-            {children}
+
+            
+            <div className="layout-page-content">
+                <Outlet />
+            </div>
+
+            
             <div className="wave-container">
                 
+                <img src={Background} alt="" />
             </div>
         </div>
-    )
+    );
 }
+
 export default LayoutPage;

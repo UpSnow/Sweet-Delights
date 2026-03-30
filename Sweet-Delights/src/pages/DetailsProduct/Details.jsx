@@ -1,32 +1,78 @@
-import Button from "../../components/Button/Button"
+import { useParams } from "react-router-dom";
 import "./Details.css"
+import Button from "../../components/Button/Button";
 
-function Details(){
-    return(
-        <section className="backgroundImg">
-            <div className="container">
-                    <div className="product">
-                        <div className="productCard">
-                            <img src="" alt="" />
-                            <div className="productCard2">
-                                <h5>Brownie</h5>
-                                <p>5,00</p>
-                                <Button variant="tertiary">Carrinho de Compras</Button>                                
-                            </div>
-                        </div>
-                        <div className="productDetails">
-                            <h1>Brownie</h1>
-                            <h2>Descrição</h2>
-                            <p>Brownie de chocolate com uma textura macia e fudgy.</p>
-                            <h2>Ingredientes</h2>
-                            <p>Chocolate, açúcar, farinha, ovos, manteiga, cacau em pó</p>
-                            <h2>Alégicos</h2>
-                            <p>Contém: Ovos, Trigo</p>
-                        </div>                     
-                    </div>
-            </div>
-        </section>
-    )
-}
+import { useCart } from "../../context/CartContext";
+import { getProdutoById } from "../../api/productApi";
 
+import { useState, useEffect } from "react";
+import BackButton from "../../components/BackButton/BackButton";
+
+
+
+const Details = () => {
+  const { id } = useParams(); // pega o id da URL
+
+  const { addToCart } = useCart();
+
+  const [produto, setProduto] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState(null);
+
+  useEffect(() => {
+    const fetchProduto = async () => {
+      try {
+        const data = await getProdutoById(id);
+        setProduto(data);
+      } catch (err) {
+        setErro("Produto não encontrado");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduto();
+  }, [id]);
+
+  // 🔄 loading
+  if (loading) return <p>Carregando...</p>;
+
+  // ❌ erro
+  if (erro) return <p>{erro}</p>;
+
+  return (
+    <div className="details-page">
+      <div style={{ width: '100%', maxWidth: '1000px'}}>
+        <BackButton variant="2" />
+      </div>
+
+      <div className="details-container">
+        {/* Lado Esquerdo: Imagem */}
+        <div className="details-image">
+          <img src={produto.image} alt={produto.name} />
+        </div>
+
+        {/* Lado Direito: Informações */}
+        <div className="details-info">
+          <h1>{produto.name}</h1>
+
+          <div className="details-meta">
+            <span>⭐ {produto.rating}</span>
+            <span>📦 Estoque: {produto.stock}</span>
+          </div>
+
+          <p className="details-description">{produto.description}</p>
+
+          <h2 className="details-price">R$ {produto.price.toFixed(2)}</h2>
+
+          <div style={{ width: '100%', maxWidth: '300px' }}>
+            <Button onClick={() => addToCart(produto)}>
+              Adicionar ao carrinho
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 export default Details

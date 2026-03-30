@@ -1,18 +1,28 @@
-// Input.jsx
 import React from "react";
-import './Input.css';
+import "./Input.css";
 
-const Input = ({ label, placeholder, type = "text", value, onChange }) => {
+const Input = ({ label, erro, ...props }) => {
   return (
     <div className="input-wrapper">
-      {label && <label className="input-label">{label}</label>}
+
+      {label && (
+        <label className="input-label" htmlFor={props.id}>
+          {label}
+        </label>
+      )}
+
       <input
-        className="input-field"
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
+        {...props} 
+        className={` input-field ${erro ? "input-error" : ""} ${props.readOnly ? "input-readonly" : ""}
+  `}
       />
+
+      {erro && (
+        <p className="error-message">
+          {erro}
+        </p>
+      )}
+
     </div>
   );
 };

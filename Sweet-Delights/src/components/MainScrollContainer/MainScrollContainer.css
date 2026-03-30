@@ -1,0 +1,24 @@
+.main-scroll-viewport {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+
+.main-scroll-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.main-scroll-viewport::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-scroll-viewport::-webkit-scrollbar-thumb {
+    background-color: var(--cor-botao);
+    border-radius: 10px;
+}

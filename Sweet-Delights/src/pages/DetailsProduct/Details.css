@@ -1,51 +1,92 @@
-.container {
-    display: flex;
-    justify-content: center; /* eixo X */
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    margin: 30px;
+/* Details.css */
+
+.details-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--esp-xl);
+  min-height: 100vh;
+  background-color: var(--cor-fundo);
+  
+  margin: 0 auto;
 }
 
-.product {
-    display: flex;
-    gap: 40px;
+/* Container para alinhar imagem e info lado a lado no Desktop */
+.details-container {
+  display: flex;
+  gap: var(--esp-xxl);
+  margin-top: var(--esp-lg);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
-.product img {
-    width: 100%;
-    height: 100%;
-    display: block;
+.details-image {
+  flex: 1;
+  max-width: 450px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background-color: #fff;
 }
 
-.productCard {
-    text-align: center;
-    background-color: var(--cor-botao-terciario);
-    border-top: 2px dotted black;
-    border-right: 2px dotted black;
-    border-left: 2px dotted black;
-    border-radius: 10px 10px 0 0;
-}
-.productCard2 {
-    background-color: var(--cor-backgroundDetails);
-    padding: 10px;
-    border-radius: 0 0 10px 10px;
+.details-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.productCard:hover {
-    transform: translateY(-6px) rotate(0.6deg);
+.details-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--esp-md);
 }
 
-.backgroundImg {
-    background-image: url(../../assets/img/Background.png);      
-    background-repeat: no-repeat;
-    background-size: cover;
+.details-info h1 {
+  color: var(--cor-secundaria);
+  font-size: 2.5rem;
+  font-weight: var(--peso-bold);
 }
 
+.details-description {
+  color: var(--cor-texto-3);
+  font-size: var(--font-md);
+  line-height: 1.6;
+}
 
+.details-meta {
+  display: flex;
+  gap: var(--esp-md);
+  color: var(--cor-backgroundDetails);
+  font-weight: var(--peso-semi);
+  font-size: var(--font-sm);
+}
+
+.details-price {
+  font-size: 2rem;
+  color: var(--cor-texto-3);
+  font-weight: var(--peso-bold);
+  margin: var(--esp-sm) 0;
+}
+
+/* Responsividade para Tablet/Mobile */
 @media (max-width: 768px) {
-  .product {
+  .details-container {
     flex-direction: column;
-    gap: 100px;
+    align-items: center;
+    gap: var(--esp-lg);
+  }
+
+  .details-image {
+    max-width: 100%;
+  }
+
+  .details-info {
+    text-align: center;
+    align-items: center;
   }
 }
