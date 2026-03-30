@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Input from "../../components/input/input";
+import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 
 import { validarCampoAddress, validarFormularioAddress } from "../../utils/validarEndereco/addressValidators";

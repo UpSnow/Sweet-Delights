@@ -3,7 +3,7 @@ import { useCart } from "../../context/CartContext";
 import "./Checkout.css"
 import { useNavigate } from "react-router-dom";
 
-import Input from "../../components/input/input";
+import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button"
 
 import BackButton from "../../components/BackButton/BackButton";

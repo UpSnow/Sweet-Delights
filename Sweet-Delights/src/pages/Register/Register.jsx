@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
-import Input from "../../components/input/input";
+import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import LayoutStripes from "../../components/LayoutStripes/LayoutStripes";
 import Logo from "../../assets/logo.png";
