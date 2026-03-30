@@ -82,7 +82,8 @@ const Profile = () => {
             setForm({
                 nome: "",
                 email: "",
-                senha: ""
+                senha: "",
+                confirmarSenha: ""
             });
 
             // redireciona (home ou login)
