@@ -2,6 +2,7 @@
 /* CartProduct.css */
 .cart-background{
     background-color: var(--cor-fundo) ;
+    height: 100vh;
 }
 .cart-container {
     max-width: 800px;

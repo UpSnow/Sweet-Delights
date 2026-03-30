@@ -26,7 +26,7 @@
       "price": 18,
       "description": "Bolo fofinho com cobertura de chocolate",
       "category": "Bolos",
-      "image": "/images/bolo.jpg",
+      "image": "/images/bolo-cenoura.jpg",
       "rating": 4.7,
       "stock": 8
     },
@@ -47,7 +47,7 @@
       "price": 9,
       "description": "Cupcake com cobertura cremosa",
       "category": "Cupcakes",
-      "image": "/images/cupcake.jpg",
+      "image": "/images/cupcake-chocolate.jpg",
       "rating": 4.9,
       "stock": 12,
       "maisVendido": true
@@ -68,7 +68,7 @@
       "price": 6,
       "description": "Donut com cobertura de morango",
       "category": "Donuts",
-      "image": "/images/donut.jpg",
+      "image": "/images/donut-morango.jpg",
       "rating": 4.4,
       "stock": 18
     },
@@ -78,7 +78,7 @@
       "price": 5,
       "description": "Brownie tradicional bem chocolatudo",
       "category": "Doces",
-      "image": "/images/logo.png",
+      "image": "/images/brownie.jpg",
       "rating": 4.9,
       "stock": 25,
       "maisVendido": true
@@ -89,7 +89,7 @@
       "price": 3.5,
       "description": "Cookie crocante com gotas de chocolate",
       "category": "Doces",
-      "image": "/images/logo.png",
+      "image": "/images/cookie.jpg",
       "rating": 4.3,
       "stock": 30,
       "maisVendido": true
@@ -100,7 +100,7 @@
       "price": 2.5,
       "description": "Trufa recheada de chocolate",
       "category": "Doces",
-      "image": "/images/logo.png",
+      "image": "/images/trufa.jpg",
       "rating": 4.6,
       "stock": 40
     },
@@ -110,7 +110,7 @@
       "price": 7,
       "description": "Coxinha de frango crocante",
       "category": "Salgados",
-      "image": "/images/salgados.jpg",
+      "image": "/images/coxinha.jpg",
       "rating": 4.8,
       "stock": 20,
       "maisVendido": true
@@ -121,7 +121,7 @@
       "price": 6,
       "description": "Empada de frango deliciosa",
       "category": "Salgados",
-      "image": "/images/salgados.jpg",
+      "image": "/images/empada.jpg",
       "rating": 4.5,
       "stock": 15
     },
@@ -131,7 +131,7 @@
       "price": 5,
       "description": "Lata 350ml",
       "category": "Bebidas",
-      "image": "/images/bebidas.jpg",
+      "image": "/images/refrigerante.jpg",
       "rating": 4.2,
       "stock": 50
     },
@@ -141,7 +141,7 @@
       "price": 7,
       "description": "Suco feito na hora",
       "category": "Bebidas",
-      "image": "/images/bebidas.jpg",
+      "image": "/images/suco-natural.jpg",
       "rating": 4.7,
       "stock": 25,
       "maisVendido": true
@@ -155,7 +155,7 @@
       "price": 19.9,
       "oldPrice": 29.9,
       "discount": 33,
-      "image": "/images/logo.png"
+      "image": "/images/bolo.jpg"
     },
     {
       "id": 2,
@@ -163,7 +163,7 @@
       "price": 6.9,
       "oldPrice": 9.9,
       "discount": 30,
-      "image": "/images/logo.png"
+      "image": "/images/cupcake-chocolate.jpg"
     },
     {
       "id": 3,
@@ -171,7 +171,7 @@
       "price": 4.5,
       "oldPrice": 7,
       "discount": 35,
-      "image": "/images/logo.png"
+      "image": "/images/donut.jpg"
     }
     
   ],

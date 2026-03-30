@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
+import BackButton from "../../components/BackButton/BackButton";
 
 function CartProduct() {
     const navigate = useNavigate()
@@ -24,6 +25,7 @@ function CartProduct() {
 
 
                 <div className="cart-container">
+                    <BackButton variant="2"/>
                     <h1>Carrinho</h1>
                     {cart.length === 0 ? (
                         <p className="empty-msg">Carrinho está vazio 🧁</p>

@@ -12,6 +12,7 @@ import BackButton from "../../components/BackButton/BackButton";
 
 
 import "./Address.css"
+import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
 const Address = () => {
   const navigate = useNavigate();
 
@@ -156,6 +157,7 @@ const Address = () => {
 
 
   return (
+    <MainScrollContainer height="calc(100vh - 40px)">
     <div className="address-container">
       <div className="address-card">
         <BackButton variant="2" />
@@ -231,6 +233,7 @@ const Address = () => {
       </div>
 
     </div >
+    </MainScrollContainer>
 
 
   )

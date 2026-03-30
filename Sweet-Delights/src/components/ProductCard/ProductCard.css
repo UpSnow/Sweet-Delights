@@ -1,25 +1,31 @@
 .product-card {
-  width: 230px; 
-  height: 340px; /* Aumentei um pouco para acomodar o movimento sem cortar */
+  width: 230px;
+  height: 340px;
+  /* Aumentei um pouco para acomodar o movimento sem cortar */
   border-radius: 0.75rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  cursor: pointer; /* Indica que é clicável */
-  
+  cursor: pointer;
+  /* Indica que é clicável */
+
   /* --- EFEITO DE MOVIMENTO --- */
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
-  will-change: transform; /* Otimiza a performance da animação */
+  will-change: transform;
+  /* Otimiza a performance da animação */
 }
 
 /* Quando o mouse passa por cima ou o usuário toca no card */
 .product-card:hover {
-  transform: translateY(-10px); /* O card sobe 10 pixels */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra suave projetada abaixo */
+  transform: translateY(-10px);
+  /* O card sobe 10 pixels */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  /* Sombra suave projetada abaixo */
 }
+
 .image-container {
   background-color: #fff3e6;
-  padding: 10px; 
+  padding: 10px;
   border: 3px dotted rgba(0, 0, 0, 0.70);
   border-bottom: none;
   display: flex;
@@ -51,6 +57,14 @@
 .product-name {
   font-weight: bold;
   font-size: 1.125rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* Número de linhas que você quer mostrar */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* Esconde o que passar das 2 linhas */
+  text-overflow: ellipsis;
+
 }
 
 .add-button {
@@ -78,7 +92,8 @@
 }
 
 .product-price {
-  color: var(--cor-botao-secundario); /* Verde ou vermelho para o preço novo */
+  color: var(--cor-botao-secundario);
+  /* Verde ou vermelho para o preço novo */
   font-weight: var(--peso-bold);
   font-size: var(--font-lg);
 }
