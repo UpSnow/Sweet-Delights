@@ -17,7 +17,7 @@ export function formatExpiry(value) {
 
     if (numbers.length <= 2) return numbers
 
-    const format = numbers.replace(/(\d{2})(\d{1,2})/, "$1/$2");// o que isso faz?
+    const format = numbers.replace(/(\d{2})(\d{1,2})/, "$1/$2");
 
     return format
 }
@@ -27,5 +27,5 @@ export function formatCVV(value) {
 }
 
 export function formatName(value) {
-    return value.replace(/[^a-zA-Z\s]/g, ""); // o que seria o replace?
+    return value.replace(/[^a-zA-Z\s]/g, ""); 
 }

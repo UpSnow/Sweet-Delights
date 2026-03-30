@@ -41,9 +41,9 @@
 }
 
 .home-content {
-    padding: 40px 0; /* Ajustei o padding vertical */
+    padding: 40px 0; 
     background-color: var(--cor-secundaria);
-    display: block; /* Mudamos de flex para block para o h2 ocupar sua própria linha */
+    display: block; 
     width: 100%;
 }
 
@@ -56,10 +56,10 @@
 .home-content h2 {
     width: auto;       /* Deixa o título ocupar o espaço natural dele */
     margin-bottom: 20px;
-    padding-left: 20px; /* Alinha com o início dos produtos */
+    padding-left: 20px; 
     color: var(--cor-texto-2);
     font-weight: var(--peso-bold);
-    font-size: var(--font-xl); /* Um pouco maior para destaque */
+    font-size: var(--font-xl); 
 }
 
 
@@ -76,14 +76,14 @@
 }
 .home-categories .divider {
   display: inline-block;
-  width: 1px;          /* realmente fino */
-  height: 3rem;        /* mesma altura visual */
+  width: 1px;         
+  height: 3rem;       
   background-color: #d8d7d7;
   margin: 0 12px;
 }
 
 .link-mais {
-  text-decoration: none;   /* tira o sublinhado */
+  text-decoration: none;   
   color: #000000;
   font-weight: 500;
   cursor: pointer;

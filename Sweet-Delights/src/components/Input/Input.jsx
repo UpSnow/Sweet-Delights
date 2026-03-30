@@ -12,7 +12,7 @@ const Input = ({ label, erro, ...props }) => {
       )}
 
       <input
-        {...props} // me explique melhor essa parte 
+        {...props} 
         className={` input-field ${erro ? "input-error" : ""} ${props.readOnly ? "input-readonly" : ""}
   `}
       />

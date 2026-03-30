@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Input from "../../components/Input/Input";
+import Input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 
 import { validarCampoAddress, validarFormularioAddress } from "../../utils/validarEndereco/addressValidators";
@@ -67,7 +67,7 @@ const Address = () => {
       clearTimeout(debounceRef.current);
 
 
-      debounceRef.current = setTimeout(async () => { //preciso entender essa logica toda e como funciona
+      debounceRef.current = setTimeout(async () => { 
 
         const cleanCep = formattedValue.replace(/\D/g, "");
 
@@ -80,7 +80,7 @@ const Address = () => {
           cep: ""
         }));
 
-        const data = await buscarCEP(cleanCep); //preciso entender essa logica toda e como funciona
+        const data = await buscarCEP(cleanCep); 
 
         if (data && !data.erro) {
           const dadosAtualizados = {
@@ -130,7 +130,7 @@ const Address = () => {
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate("/checkout"); // muda a rota aqui
+        navigate("/checkout"); 
       }, 2000);
 
       return () => clearTimeout(timer);
@@ -144,7 +144,7 @@ const Address = () => {
           <h1>✅ Endereço salvo!</h1>
           <p>Redirecionando para o pagamento...</p>
 
-          {/* Opcional: Um loader fofinho com as cores do seu tema */}
+          
           <div className="loader-dots">
             <div></div>
             <div></div>

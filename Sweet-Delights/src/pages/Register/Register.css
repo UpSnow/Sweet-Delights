@@ -3,7 +3,7 @@
 /* ================= FORM GRID ================= */
 .register-form-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 🔥 duas colunas */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 2rem;
   width: 100%;
   max-width: 480px;
@@ -11,7 +11,7 @@
   justify-items: center;
 }
 
-/* Faz inputs ocuparem 100% da célula */
+
 .register-form-grid > * {
   width: 100%;
 }
@@ -20,8 +20,7 @@
 .register-button {
   max-width: 150px;
   margin-top: 1.5rem;
-  grid-column: 1 / -1;      /* ocupa as duas colunas */
-  justify-self: center;     /* centraliza no grid */
+  grid-column: 1 / -1;      
 }
 
 
@@ -47,6 +46,6 @@
 /* ================= RESPONSIVO ================= */
 @media (max-width: 768px) {
   .register-form-grid {
-    grid-template-columns: 1fr; /* 🔥 uma coluna no mobile */
+    grid-template-columns: 1fr; 
   }
 }

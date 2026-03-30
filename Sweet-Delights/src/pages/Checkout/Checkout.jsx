@@ -3,7 +3,7 @@ import { useCart } from "../../context/CartContext";
 import "./Checkout.css"
 import { useNavigate } from "react-router-dom";
 
-import Input from "../../components/Input/Input"
+import Input from "../../components/input/input";
 import Button from "../../components/Button/Button"
 
 import BackButton from "../../components/BackButton/BackButton";
@@ -23,14 +23,14 @@ const Checkout = () => {
         name: ""
     });
 
-    //O que esses estados fazem e para quer servem?
+    
     const [erros, setErros] = useState({});
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
     const navigate = useNavigate()
 
-    useEffect(() => { // preciso que me explique essa parte e como funciona
+    useEffect(() => { 
         if (success) {
             const timer = setTimeout(() => {
                 navigate("/");
@@ -41,12 +41,12 @@ const Checkout = () => {
     }, [success]);
 
 
-    function handleChange(e) { // preciso entender como a logica funciona, ja que passsamos no onChange
+    function handleChange(e) {
 
         const { name, value } = e.target
 
         let formattedValue = value;
-        // 🔹 aplica máscara baseado no campo
+        
         if (name === "cardNumber") {
             formattedValue = formatCardNumber(value);
         }
@@ -63,15 +63,15 @@ const Checkout = () => {
             formattedValue = formatName(value);
         }
 
-        const novosDados = { // como isso funciona?
+        const novosDados = { 
             ...dados,
-            [name]: formattedValue // por que tenho que usar o formattedValue
+            [name]: formattedValue 
         }
         setDados(novosDados)
 
         const erros = validarCampoCard(name, novosDados)
 
-        setErros((prev) => ({ // Como essa parte funciona?
+        setErros((prev) => ({ 
             ...prev,
             [name]: erros
         }))
@@ -80,7 +80,7 @@ const Checkout = () => {
 
 
     function handleSubmit(e) {
-        e.preventDefault(); // por qual motivo tenho que usar isso sempre?
+        e.preventDefault(); 
 
         const errosValidados = validarFormularioCard(dados);
 
@@ -91,7 +91,7 @@ const Checkout = () => {
         setLoading(true);
 
 
-        setTimeout(() => { // me explique o que essa parte faz
+        setTimeout(() => { 
             setLoading(false)
             setSuccess(true)
             clearCart();
@@ -99,13 +99,13 @@ const Checkout = () => {
 
 
     }
-    if (success) {// a logica é se success for true jogo uma mensagem de sucesso ?
+    if (success) {
         return (
             <div className="checkout-page">
                 <div className="checkout-card payment-success">
                     <h1>✅ Pagamento aprovado!</h1>
                     <p>Seu pedido foi realizado com sucesso 🎉</p>
-                    {/* Aqui você poderia colocar um botão "Voltar para Loja" */}
+                    
                 </div>
             </div>
         );

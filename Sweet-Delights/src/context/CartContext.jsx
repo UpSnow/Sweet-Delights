@@ -6,16 +6,16 @@ export  function CartProvider({ children }) {
 
     const [cart, setCart] = useState(() => {
         const stored = localStorage.getItem("cart");
-        return stored ? JSON.parse(stored) : []; /// preciso entender como funciona
+        return stored ? JSON.parse(stored) : []; 
     });
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]) // preciso entender o por que de usar useEffectr
+    }, [cart]) 
 
 
 
-    // 2. Envolva a função com useCallback
+  
     const addToCart = useCallback((product) => {
         setCart((prevCart) => {
             const productExists = prevCart.find(item => item.id === product.id);
@@ -29,16 +29,16 @@ export  function CartProvider({ children }) {
             }
             return [...prevCart, { ...product, quantity: 1 }];
         });
-    }, []); // 3. Array vazio! A função nasce uma vez e nunca mais muda de "endereço".
+    }, []); 
 
     const removeFromCart = useCallback((id) => {
         setCart((prevCart) => prevCart.filter(item => item.id !== id));
-    }, []); // 4. Também estável, não depende de variáveis externas, só do 'setCart'
+    }, []); 
 
 
     const updateQuantity = useCallback((id, newQuantity) => {
         if (newQuantity <= 0) {
-            removeFromCart(id); // Aqui tem um detalhe importante!
+            removeFromCart(id); 
             return;
         }
         setCart((prevCart) =>
@@ -46,17 +46,17 @@ export  function CartProvider({ children }) {
                 item.id === id ? { ...item, quantity: newQuantity } : item
             )
         );
-    }, [removeFromCart]); // Adicionamos 'removeFromCart' como dependência
+    }, [removeFromCart]); 
     const clearCart = useCallback(() => {
         setCart([]);
-    }, []); // Array vazio porque o setCart nunca muda
+    }, []); 
 
 
     const total = cart.reduce((acc, item) => {
         return acc + item.price * item.quantity
     }, 0);
 
-    const totalItems = cart.reduce((acc, item) => { // preciso entender como o reduce funciona
+    const totalItems = cart.reduce((acc, item) => { 
         return acc + item.quantity;
     }, 0);
 

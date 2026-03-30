@@ -2,7 +2,7 @@
 
 .promocoes-page {
   padding: var(--esp-xl);
-  background-color: var(--cor-fundo); /* O seu creme de fundo */
+  background-color: var(--cor-fundo); 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 .promocoes-page h1 {
-  color: var(--cor-secundaria); /* Marrom escuro */
+  color: var(--cor-secundaria); 
   font-size: 3rem;
   margin-bottom: var(--esp-xl);
   font-weight: var(--peso-bold);

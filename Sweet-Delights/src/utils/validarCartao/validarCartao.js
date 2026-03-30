@@ -39,7 +39,7 @@ export function validarFormularioCard(dados) {
 
 function validarCardNumber(dados, erros) {
 
-    const numbers = dados.cardNumber?.replace(/\s/g, "") // Quero entender essa parte. oque seria dados.cardNumber?
+    const numbers = dados.cardNumber?.replace(/\s/g, "") 
 
     if (!numbers) {
         erros.cardNumber = "Número do cartão é obrigatório";
@@ -59,16 +59,16 @@ function validarExpiry(dados, erros) {
         erros.expiry = "Validade é obrigatória";
     }
     else if (!/^\d{2}\/\d{2}$/.test(value)) {
-        { /*como essa logica funciona?*/ }
+       
         erros.expiry = "Formato inválido (MM/AA)";
         return;
 
     }
 
-    const [month] = value.split("/") //o que essa cosnte faz?
+    const [month] = value.split("/") 
 
 
-    if (month < 1 || month > 12) { //como essa parte funciona?
+    if (month < 1 || month > 12) { 
         erros.expiry = "Mês inválido";
     }
 

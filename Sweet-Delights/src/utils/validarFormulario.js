@@ -6,7 +6,7 @@ const validadores = {
   confirmarSenha: validarConfirmacaoSenha
 }
 
-// valida apenas um campo
+
 export function validarCampo(name, dados){
 
   const erros = {}
@@ -21,7 +21,7 @@ export function validarCampo(name, dados){
 
 }
 
-// valida o formulário inteiro
+
 export function validarFormulario(dados){
 
   const erros = {}

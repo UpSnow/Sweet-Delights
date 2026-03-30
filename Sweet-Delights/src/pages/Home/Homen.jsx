@@ -28,7 +28,7 @@ const Home = () => {
             section?.scrollIntoView({ behavior: "smooth" });
 
             // 🔥 remove o #destaques da URL
-            navigate(location.pathname, { replace: true }); // o que é pathname?
+            navigate(location.pathname, { replace: true }); 
         }
     }, [location, navigate]);
 

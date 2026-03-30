@@ -1,6 +1,6 @@
 
 export async function buscarCEP(cep) {
-    const cleanCep = cep.replace(/\D/g, ""); // o que esse regex faz?
+    const cleanCep = cep.replace(/\D/g, ""); 
 
     if(cleanCep.length !== 8) return null;
 

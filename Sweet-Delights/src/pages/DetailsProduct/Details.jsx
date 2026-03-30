@@ -42,7 +42,7 @@ const Details = () => {
 
   return (
     <div className="details-page">
-      <div style={{ width: '100%' }}>
+      <div style={{ width: '100%', maxWidth: '1000px'}}>
         <BackButton variant="2" />
       </div>
 

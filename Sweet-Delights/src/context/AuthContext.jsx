@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
 
     }, [])
 
-    const updateUser = useCallback((updatedData) =>{ // tirar duvidas sobnre essa parte 
+    const updateUser = useCallback((updatedData) =>{ 
         try{
             const allUsers = JSON.parse(localStorage.getItem("users") || []);
 
@@ -86,17 +86,17 @@ export const AuthProvider = ({ children }) => {
 
     }, [])
 
-    const deleteUser = useCallback(() => { // entende como ele remover o usuario
-        // 1. Pega a lista de todos os usuários cadastrados
+    const deleteUser = useCallback(() => { 
+     
         const allUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-        // 2. Filtra a lista, removendo o usuário que está logado no momento
+      
         const updatedUsers = allUsers.filter(u => u.email !== user?.email);
 
-        // 3. Salva a lista atualizada (sem o usuário deletado) de volta no localStorage
+        
         localStorage.setItem("users", JSON.stringify(updatedUsers));
 
-        // 4. Faz o logout (limpa a sessão atual)
+        
         setUser(null);
         localStorage.removeItem("user");
 

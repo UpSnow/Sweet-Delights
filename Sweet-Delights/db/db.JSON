@@ -102,7 +102,8 @@
       "category": "Doces",
       "image": "/images/trufa.jpg",
       "rating": 4.6,
-      "stock": 40
+      "stock": 40,
+      "maisVendido": true
     },
     {
       "id": 10,

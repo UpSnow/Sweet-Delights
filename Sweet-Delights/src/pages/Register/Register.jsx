@@ -24,7 +24,7 @@ const Register = () => {
     email: "",
     senha: "",
     confirmarSenha: ""
-  }) // esse é a melhor forma de fazer form?
+  }) 
 
   const [erros, setErros] = useState({})
 
@@ -54,7 +54,7 @@ const Register = () => {
     e.preventDefault()
     const errosValidados = validarFormulario(form)
 
-    if (Object.keys(errosValidados).length > 0) { // o que essa parte faz? o que seria essa codição?
+    if (Object.keys(errosValidados).length > 0) { 
       setErros(errosValidados)
       return
     }

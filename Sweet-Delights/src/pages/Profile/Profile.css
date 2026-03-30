@@ -6,12 +6,11 @@
   align-items: center;
   padding: var(--esp-xl);
   height: 100vh;
-  /* Garante que o fundo use a cor do seu global */
   background-color: var(--cor-fundo);
 }
 
 .profile-card {
-  background-color: var(--cor-detalhe); /* Cor creme do seu projeto */
+  background-color: var(--cor-detalhe); 
   width: 100%;
   max-width: 480px;
   padding: var(--esp-xl);
@@ -29,8 +28,8 @@
 .avatar-circle {
   width: 80px;
   height: 80px;
-  background-color: var(--cor-backgroundDetails); /* Rosa escuro */
-  color: var(--cor-texto-2); /* Texto branco */
+  background-color: var(--cor-backgroundDetails); 
+  color: var(--cor-texto-2); 
   font-size: var(--font-xxl);
   font-weight: var(--peso-bold);
   display: flex;
@@ -75,9 +74,6 @@
 .input-group {
   margin-bottom: var(--esp-md);
 }
-
-/* Aqui o estilo vem do seu componente <Input /> customizado, 
-   mas você pode garantir o espaçamento aqui */
 
 .profile-actions {
   margin-top: var(--esp-lg);

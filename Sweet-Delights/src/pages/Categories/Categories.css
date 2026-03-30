@@ -29,7 +29,7 @@
 
 /* O Card da Categoria */
 .categoria-card {
-    background-color: var(--cor-detalhe); /* Creme */
+    background-color: var(--cor-detalhe); 
     border-radius: var(--radius-lg);
     padding: var(--esp-md);
     text-align: center;
@@ -46,7 +46,7 @@
 .categoria-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-md);
-    border-color: var(--cor-botao); /* Rosa ao focar */
+    border-color: var(--cor-botao); 
 }
 
 .categoria-card img {
@@ -54,7 +54,6 @@
     height: 120px;
     object-fit: contain;
     margin-bottom: var(--esp-sm);
-    /* Previne que a imagem seja "arrastada" ao clicar rápido */
     user-select: none;
     -webkit-user-drag: none;
 }
@@ -69,7 +68,7 @@
 /* Responsividade para celulares pequenos */
 @media (max-width: 480px) {
     .categorias-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+        grid-template-columns: repeat(2, 1fr); 
         gap: var(--esp-sm);
     }
     

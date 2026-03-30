@@ -19,13 +19,15 @@ function CartProduct() {
     const stock = 10;
 
 
-    return (// preciso que me explique  essa parte do map e do cart.legnhts para que serve por qual motivo tenho que fazer
-        <MainScrollContainer height="calc(100vh - 40px)" >
+    return (
+        
             <div className="cart-background">
 
 
                 <div className="cart-container">
                     <BackButton variant="2"/>
+                    <MainScrollContainer height="calc(80vh - 40px)" >
+                    
                     <h1>Carrinho</h1>
                     {cart.length === 0 ? (
                         <p className="empty-msg">Carrinho está vazio 🧁</p>
@@ -74,10 +76,12 @@ function CartProduct() {
 
                     )}
 
+                    </MainScrollContainer>
+
 
                 </div>
             </div>
-        </MainScrollContainer>
+       
 
     );
 };

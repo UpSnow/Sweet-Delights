@@ -1,10 +1,10 @@
 .layout-page-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* ocupa a tela toda */
+    min-height: 100vh; 
     width: 100%;
     background-color: var(--cor-fundo);
-    position: relative; /* importante para o wave */
+    position: relative; 
 }
 
 .layout-page-header { 
@@ -46,7 +46,7 @@
     display: flex;
     gap: 0.5rem;
 }
-/* Container que envolve o ícone */
+
 .profile-icon-container {
   display: flex;
   align-items: center;
@@ -54,14 +54,14 @@
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-color: var(--cor-fundo-card); /* Um tom creme ou branco */
-  color: white; /* O rosa da sua marca */
+  background-color: var(--cor-fundo-card); 
+  color: white; 
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
 
-/* Tamanho do ícone da biblioteca FontAwesome */
+
 .profile-icon-container svg {
   font-size: 1.8rem;
 }
@@ -74,11 +74,11 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Efeito de clique (feedback visual) */
+
 .profile-icon-container:active {
   transform: scale(0.95);
 }
-/*Estuda essa parte*/
+
 .layout-page-content {
     flex: 1;
     position: relative;
@@ -94,7 +94,7 @@
     left: 0;
     width: 100%;
     z-index: 1;
-    pointer-events: none; /* não atrapalha cliques */
+    pointer-events: none; 
 }
 
 .wave-container img {

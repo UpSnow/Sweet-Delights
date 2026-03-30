@@ -8,7 +8,7 @@
     max-width: 800px;
     margin: var(--esp-xl) auto;
     padding: var(--esp-lg);
-    background-color: var(--cor-detalhe); /* Creme claro */
+    background-color: var(--cor-detalhe); 
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
 }

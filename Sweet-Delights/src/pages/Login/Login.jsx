@@ -21,7 +21,7 @@ const Login = () => {
     senha: ""
   });
 
-  // CORREÇÃO 1: Usar colchetes [] e inicializar como string
+  
   const [erros, setErros] = useState("");
 
   const handleChange = (e) => {
@@ -37,11 +37,10 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // CORREÇÃO 2: Verifique se sua função login retorna true ou um objeto
+    
     const success = login(form.email, form.senha);
 
     if (success) {
-      // CORREÇÃO 3: replace: true para não voltar ao login com o botão voltar
       navigate(from, { replace: true });
     } else {
       setErros("Email ou senha inválida");

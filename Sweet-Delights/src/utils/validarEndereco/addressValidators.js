@@ -11,7 +11,7 @@ const validadores ={
 export function validarCampoAddress(name, dados) {
     const erros = {}
 
-    const validador = validadores[name] // duvida [name] isto é um array de nome, tipo cep, rua e os demais?
+    const validador = validadores[name] 
     
     if(validador){
         validador(dados,erros);
@@ -24,7 +24,7 @@ export function validarCampoAddress(name, dados) {
 export function validarFormularioAddress(dados) {
      const erros = {}
 
-     Object.keys(validadores).forEach((campo) => { //entende a logica dessa parte
+     Object.keys(validadores).forEach((campo) => { 
         validadores[campo](dados,erros)
      })
 

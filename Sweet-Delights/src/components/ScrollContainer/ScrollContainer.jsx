@@ -1,15 +1,44 @@
-import React from 'react';
+import { useRef, useState } from "react";
 import './ScrollContainer.css';
 
-const ScrollContainer = ({ children, title, id }) => {
+const ScrollContainer = ({ children }) => {
+  const scrollRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const startDragging = (e) => {
+    setIsDragging(true);
+    // e.pageX pega a posição horizontal do mouse
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const stopDragging = () => {
+    setIsDragging(false);
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault(); // Impede seleções de texto indesejadas
+    
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    // O multiplicador (ex: 2) define a velocidade do arraste
+    const walk = (x - startX) * 2; 
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
-    <section className="scroll-section">
-      {title && <h2 className="scroll-title" id={id}>{title}</h2>}
-      
-      <div className="scroll-wrapper">
-        {children}
-      </div>
-    </section>
+    <div 
+      className={`scroll-wrapper ${isDragging ? "active" : ""}`}
+      ref={scrollRef}
+      onMouseDown={startDragging}
+      onMouseLeave={stopDragging}
+      onMouseUp={stopDragging}
+      onMouseMove={onMouseMove}
+    >
+      {children}
+    </div>
   );
 };
 

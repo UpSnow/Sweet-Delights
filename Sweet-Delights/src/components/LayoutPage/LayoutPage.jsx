@@ -32,23 +32,23 @@ const LayoutPage = () => {
     return (
         <div className="layout-page-container">
 
-            {/* header */}
+           
             <div className="layout-page-header">
 
-                {/* Logo */}
+                
                 <div className="layout-page-logo" onClick={() => navigate("/home")}>
                     <img src={Logo} alt="Logo" />
                     <p>Sweet Delights</p>
                 </div>
 
-                {/* Menu */}
+                
                 <div className="layout-page-menu">
                     <Link to="/Categorias">Categorias</Link>
                     <Link to="/home#destaques">Destaques</Link>
                     <Link to="/promocao">Promoções</Link>
                 </div>
 
-                {/* User Buttons */}
+                
                 <div className="layout-page-user-buttons">
                     <Button
 
@@ -74,14 +74,14 @@ const LayoutPage = () => {
                 </div>
             </div>
 
-            {/* Área principal onde as rotas filhas serão renderizadas */}
+            
             <div className="layout-page-content">
                 <Outlet />
             </div>
 
-            {/* Footer / onda */}
+            
             <div className="wave-container">
-                {/* Aqui pode colocar o SVG da onda ou outro conteúdo */}
+                
                 <img src={Background} alt="" />
             </div>
         </div>

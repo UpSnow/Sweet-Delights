@@ -1,5 +1,5 @@
 
-import { Navigate,useLocation } from "react-router-dom"; // qual é a diferença do navigate para p useNavigate
+import { Navigate,useLocation } from "react-router-dom"; 
 import { useAuth } from "../../context/AuthContext";
 
 
@@ -9,8 +9,8 @@ const PrivateRoute = ({children}) =>{
 
 
      if(!isAuthenticated){
-        return <Navigate to= "/login" state={{from: location}} replace></Navigate> // como isso funciona
-     } // o que o replace faz?
+        return <Navigate to= "/login" state={{from: location}} replace></Navigate> 
+     } 
       return children
 }
 
