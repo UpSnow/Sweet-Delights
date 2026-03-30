@@ -1,4 +1,4 @@
-const API = "http://localhost:3000";
+const API = "https://sweet-delights-api.onrender.com";
 
 export const getProdutos = async () => {
   const res = await fetch(`${API}/produtos`);
