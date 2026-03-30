@@ -1,12 +1,22 @@
 .product-card {
   width: 230px; 
-  height: 300px;
+  height: 340px; /* Aumentei um pouco para acomodar o movimento sem cortar */
   border-radius: 0.75rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer; /* Indica que é clicável */
+  
+  /* --- EFEITO DE MOVIMENTO --- */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+  will-change: transform; /* Otimiza a performance da animação */
 }
 
+/* Quando o mouse passa por cima ou o usuário toca no card */
+.product-card:hover {
+  transform: translateY(-10px); /* O card sobe 10 pixels */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra suave projetada abaixo */
+}
 .image-container {
   background-color: #fff3e6;
   padding: 10px; 
@@ -62,13 +72,13 @@
 
 .old-price {
   text-decoration: line-through;
-  color: #be0f0f;
-  font-size: 0.875rem;
-  margin-right: 5px;
+  color: #e70f0f;
+  font-size: var(--font-sm);
+  margin-right: 8px;
 }
 
 .product-price {
-  font-weight: bold;
-  font-size: 0.875rem;
-  text-align: right;
+  color: var(--cor-botao-secundario); /* Verde ou vermelho para o preço novo */
+  font-weight: var(--peso-bold);
+  font-size: var(--font-lg);
 }

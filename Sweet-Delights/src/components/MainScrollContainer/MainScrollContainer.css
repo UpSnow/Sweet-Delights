@@ -1,0 +1,25 @@
+.main-scroll-viewport {
+    width: 100%;
+    /* A altura vem da prop style={{height}} que passamos no JSX */
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+/* Garante que o conteúdo lá dentro não quebre o layout */
+.main-scroll-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Personalize a barra para ficar 'bonitinha' como você pediu */
+.main-scroll-viewport::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-scroll-viewport::-webkit-scrollbar-thumb {
+    background-color: var(--cor-botao); /* Rosa do seu tema */
+    border-radius: 10px;
+}

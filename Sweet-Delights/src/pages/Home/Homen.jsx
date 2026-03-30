@@ -1,45 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Home.css"
 import logo from "../../assets/logo.png"
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { Link, useLocation,useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 
 import { useCart } from "../../context/CartContext";
 
+import { getProdutos, getMaisVendidos } from "../../api/productApi";
+import ScrollContainer from "../../components/ScrollContainer/ScrollContainer";
+import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
 
-const products = [
-    {
-        id: 1,
-        name: "Brownie",
-        price: 5.0,
-        image: logo,
-    },
-    {
-        id: 2,
-        name: "Cookie",
-        price: 3.5,
-        image: logo,
-    },
-    {
-        id: 3,
-        name: "Trufa",
-        price: 2.0,
-        image: logo,
-    },
-    {
-        id: 4,
-        name: "Bolo de Pote",
-        price: 7.0,
-        image: logo,
-    },
-
-];
 
 const Home = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const { addToCart } = useCart();
+
+    const [produtos, setProdutos] = useState([]);
+    const [maisVendidos, setMaisVendidos] = useState([]);
 
     useEffect(() => {
         if (location.hash === "#destaques") {
@@ -52,9 +32,19 @@ const Home = () => {
         }
     }, [location, navigate]);
 
-    const { addToCart } = useCart();
+    useEffect(() => {
+        getProdutos().then(setProdutos)
+
+    }, [])
+    useEffect(() => {
+        getMaisVendidos().then(setMaisVendidos)
+
+    }, [])
 
     return (
+        <MainScrollContainer height="calc(100vh - 40px)">
+
+       
         <div className="container-home">
             <header className="header-home">
                 <img src={logo} />
@@ -64,17 +54,20 @@ const Home = () => {
                 </div>
             </header>
             <div className="home-content">
-                <h2>Popular</h2>
-                <div className="home-product">
-                    {products.map((product) =>
-                        <ProductCard
-                            key={product.id}
-                            name={product.name}
-                            price={product.price}
-                            image={product.image}
-                            onAdd={() => addToCart(product)}
-                        />
-                    )}
+                <div className="home-inner-container"> {/* Div auxiliar para controle */}
+                    <h2>Popular</h2>
+                    <ScrollContainer>
+                        {produtos.map((product) =>
+                            <ProductCard
+                                key={product.id}
+                                id={product.id}
+                                name={product.name}
+                                price={product.price}
+                                image={product.image}
+                                onAdd={() => addToCart(product)}
+                            />
+                        )}
+                    </ScrollContainer>
                 </div>
             </div>
             <h2 className="home-texto-h2">Categorias</h2>
@@ -87,18 +80,25 @@ const Home = () => {
                 <span className="divider"></span>
                 <Link to="/categorias" className="link-mais">Mais...</Link>
             </div>
-            <h2 className="home-texto-h2" id="destaques">Mais Vendidos da Semana</h2>
-            <div className="home-product-2">
-                {products.map((product) =>
-                    <ProductCard
-                        key={product.id}
-                        name={product.name}
-                        price={product.price}
-                        image={product.image}
-                        onAdd={() => addToCart(product)}
-                    />
-                )}
+            <div className="home-section">
+                <h2 className="home-texto-h2" id="destaques">Mais Vendidos da Semana</h2>
+                
+                    <ScrollContainer>
+                        {maisVendidos.map((product) =>
+                        <ProductCard
+                            key={product.id}
+                            id={product.id}
+                            name={product.name}
+                            price={product.price}
+                            image={product.image}
+                            onAdd={() => addToCart(product)}
+                        />
+                    )}
+                    </ScrollContainer>
+                    
+                
             </div>
+
             <div className="home-search">
                 <h1>
                     Um doce é pequeno, mas a
@@ -137,6 +137,7 @@ const Home = () => {
 
 
         </div>
+         </MainScrollContainer>
     )
 
 }

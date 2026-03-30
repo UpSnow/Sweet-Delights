@@ -1,7 +1,6 @@
 .container-home {
     width: 100%;
-    height: calc(100vh - 50px) ;
-    overflow-y: auto ;
+    
     
 }
 .container-home .home-texto-h2{
@@ -42,28 +41,29 @@
 }
 
 .home-content {
-   height: 450px;
-    display: flex;
+    padding: 40px 0; /* Ajustei o padding vertical */
     background-color: var(--cor-secundaria);
-    justify-content: center;
-
-
+    display: block; /* Mudamos de flex para block para o h2 ocupar sua própria linha */
+    width: 100%;
 }
+
+/* .home-inner-container {
+    /* max-width: 1200px; /* Ou a largura máxima que você desejar */
+    /* margin: 0 auto;    Centraliza o conteúdo na tela 
+}*/ 
+ 
 
 .home-content h2 {
-    margin-top: 20px;
+    width: auto;       /* Deixa o título ocupar o espaço natural dele */
+    margin-bottom: 20px;
+    padding-left: 20px; /* Alinha com o início dos produtos */
     color: var(--cor-texto-2);
     font-weight: var(--peso-bold);
-    font-size: var( --font-lg);
-
+    font-size: var(--font-xl); /* Um pouco maior para destaque */
 }
 
-.home-product {
-    display: flex;
-    gap: 8rem;;
-    padding: 40px 40px 40px 0px;
-    align-items: center;
-}
+
+
 
 .home-categories{
     display: flex;
@@ -94,11 +94,8 @@
   color: #ff1f4b;
   text-decoration: underline;
 }
-.home-product-2{
-    margin: 30px 0px 50px 0px;
-    display: flex;
-    justify-content: space-around;
-}
+
+
 .home-search{
     background-color: var(--cor-detalhe-2);
     height: 400px;

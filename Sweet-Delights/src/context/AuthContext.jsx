@@ -54,11 +54,55 @@ export const AuthProvider = ({ children }) => {
 
     }, [])
 
+    const updateUser = useCallback((updatedData) =>{ // tirar duvidas sobnre essa parte 
+        try{
+            const allUsers = JSON.parse(localStorage.getItem("users") || []);
+
+            if (updatedData.email !== user.email) {
+            const emailExists = allUsers.some(u => u.email === updatedData.email);
+            if (emailExists) return { success: false, message: "Este e-mail já está em uso." };
+        }
+
+            const updatedUsersList = allUsers.map((u) => 
+                u.email === user.email ?{...u, ...updatedData}: u
+        );
+
+        localStorage.setItem("users", JSON.stringify(updatedUsersList));
+
+        const newUserData = {...user, ...updatedData};
+
+        setUser(newUserData)
+        localStorage.setItem("user", JSON.stringify(newUserData));
+        return { success: true, message: "Perfil atualizado com sucesso!" };
+
+        } catch(error){
+            return { success: false, message: "Erro ao atualizar dados." };
+        }
+    },[user])
+
     const logout = useCallback(() => {
         setUser(null)
         localStorage.removeItem("user")
 
     }, [])
+
+    const deleteUser = useCallback(() => { // entende como ele remover o usuario
+        // 1. Pega a lista de todos os usuários cadastrados
+        const allUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+        // 2. Filtra a lista, removendo o usuário que está logado no momento
+        const updatedUsers = allUsers.filter(u => u.email !== user?.email);
+
+        // 3. Salva a lista atualizada (sem o usuário deletado) de volta no localStorage
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+        // 4. Faz o logout (limpa a sessão atual)
+        setUser(null);
+        localStorage.removeItem("user");
+
+        alert("Sua conta foi excluída com sucesso!");
+
+    }, [user])
 
     const isAuthenticated = !!user;
 
@@ -68,8 +112,11 @@ export const AuthProvider = ({ children }) => {
         login,
         register,
         logout,
-        isAuthenticated
-    }), [user, login, register, logout, isAuthenticated]);
+        isAuthenticated,
+        deleteUser,
+        updateUser,
+        loading
+    }), [user, login, register, logout, isAuthenticated, deleteUser,loading, updateUser]);
     return (
         <AuthContext.Provider value={value} > {loading ? (
             <p>Carregando dado...</p>

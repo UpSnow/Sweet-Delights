@@ -11,6 +11,8 @@ import Checkout from "../pages/Checkout/Checkout";
 import Address from "../pages/Addresses/Address";
 import Promotion from "../pages/Promotion/Promotion";
 
+import Profile from "../pages/Profile/Profile";
+
 
 import Categories from "../pages/Categories/Categories"
 import Loja from "../pages/Loja/Loja";
@@ -48,6 +50,15 @@ const AppRoutes = () => {
 
                             <Route path="/categorias" element={<Categories />} />
                             <Route path="/loja/:categoria" element={<Loja />} />
+
+                            <Route path="/perfil" element={
+                                <PrivateRoute>
+                                    <Profile />
+                                </PrivateRoute>
+                            } />
+
+
+
 
                             <Route path="/checkout" element={
                                 <PrivateRoute>

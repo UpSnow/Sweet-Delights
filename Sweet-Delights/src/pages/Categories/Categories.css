@@ -1,24 +1,80 @@
+/* Categories.css */
+
+.categorias-page {
+    padding: var(--esp-xl);
+    background-color: var(--cor-fundo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.categorias-page h1 {
+    color: var(--cor-secundaria);
+    font-size: var(--font-xxl);
+    margin: var(--esp-lg) 0;
+    font-weight: var(--peso-bold);
+    text-align: center;
+}
+
+/* Grid que organiza os cards */
 .categorias-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--esp-lg);
+    width: 100%;
+    max-width: 1000px;
+    padding: var(--esp-md);
 }
 
+/* O Card da Categoria */
 .categoria-card {
-  cursor: pointer;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  background: #fff;
-  transition: 0.3s;
+    background-color: var(--cor-detalhe); /* Creme */
+    border-radius: var(--radius-lg);
+    padding: var(--esp-md);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--cor-detalhe-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Efeito ao passar o mouse */
 .categoria-card:hover {
-  transform: scale(1.05);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--cor-botao); /* Rosa ao focar */
 }
 
 .categoria-card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: var(--esp-sm);
+    /* Previne que a imagem seja "arrastada" ao clicar rápido */
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.categoria-card p {
+    color: var(--cor-texto-3);
+    font-weight: var(--peso-semi);
+    font-size: var(--font-md);
+    text-transform: capitalize;
+}
+
+/* Responsividade para celulares pequenos */
+@media (max-width: 480px) {
+    .categorias-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+        gap: var(--esp-sm);
+    }
+    
+    .categoria-card img {
+        width: 80px;
+        height: 80px;
+    }
 }

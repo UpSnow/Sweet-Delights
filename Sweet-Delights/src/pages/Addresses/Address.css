@@ -1,0 +1,149 @@
+/* Success.css */
+
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--esp-xl);
+  height: 100vh;
+  background-color: var(--cor-fundo);
+}
+
+.success-card {
+  background-color: var(--cor-detalhe); /* Creme */
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  padding: var(--esp-xxl) var(--esp-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--cor-detalhe-2); /* Rosa */
+  text-align: center;
+  
+  /* Uma animação suave de entrada */
+  animation: fadeInScale 0.5s ease-out;
+}
+
+.success-card h1 {
+  color: var(--cor-botao-secundario); /* Verde (sucesso) */
+  font-size: var(--font-xl);
+  margin-bottom: var(--esp-md);
+  font-weight: var(--bold);
+}
+
+.success-card p {
+  color: var(--cor-texto-3); /* Marrom */
+  font-size: var(--font-md);
+  font-weight: var(--peso-medio);
+}
+
+/* Efeito de "pulso" no checkmark se você usar um ícone depois */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Adicionando um loaderzinho discreto */
+.loader-dots {
+  margin-top: var(--esp-lg);
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.loader-dots div {
+  width: 8px;
+  height: 8px;
+  background-color: var(--cor-botao);
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.loader-dots div:nth-child(2) { animation-delay: 0.2s; }
+.loader-dots div:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  to { transform: translateY(-10px); }
+}
+
+
+/* Address.css */
+
+.address-container {
+  display: flex ;
+  justify-content: center;
+  align-items: centert;
+  padding: var(--esp-xl);
+ height: 100vh;
+  background-color: var(--cor-fundo);
+}
+
+.address-card {
+  background-color: var(--cor-detalhe); /* Creme */
+  width: 100%;
+  max-height: 90vh;
+  max-width: 500px;
+  padding: var(--esp-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--cor-detalhe-2);
+
+  
+}
+
+.address-card h1 {
+  color: var(--cor-secundaria);
+  font-size: var(--font-xxl);
+  text-align: center;
+  margin-bottom: var(--esp-lg);
+  font-weight: var(--peso-bold);
+}
+
+/* Estilização do formulário */
+.address-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-md);
+  align-items: center;
+}
+
+/* Estilo para quando o CEP está sendo buscado */
+.loading-cep {
+  font-size: var(--font-xs);
+  color: var(--cor-backgroundDetails);
+  font-weight: var(--peso-medio);
+  margin-top: calc(var(--esp-xs) * -1); /* Puxa para perto do input de CEP */
+  margin-bottom: var(--esp-xs);
+  font-style: italic;
+}
+
+/* Ajuste nos inputs que são ReadOnly (Cidade/Estado preenchidos pelo CEP) */
+input:read-only {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--cor-texto-3);
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+/* Botão de salvar no final do formulário */
+.btn-save-address {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--esp-md);
+  width: 100%;
+  height: var(--altura-botao);
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 480px) {
+  .address-card {
+    padding: var(--esp-lg);
+  }
+}

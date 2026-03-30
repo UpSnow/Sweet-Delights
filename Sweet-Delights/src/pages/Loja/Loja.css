@@ -1,0 +1,52 @@
+/* Loja.css */
+
+.loja-page {
+  padding: var(--esp-xl);
+  background-color: var(--cor-fundo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loja-page h1 {
+  color: var(--cor-secundaria);
+  font-size: var(--font-xxl);
+  margin: var(--esp-lg) 0;
+  font-weight: var(--peso-bold);
+  text-transform: capitalize; /* Garante que 'bolos' vire 'Bolos' */
+  text-align: center;
+}
+
+/* Grid de Produtos */
+.products-grid {
+  display: grid;
+  /* Cria colunas responsivas que se ajustam sozinhas */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--esp-lg);
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--esp-md);
+  justify-items: center; /* Centraliza o card dentro da célula do grid */
+}
+
+/* Estilo para quando a categoria está vazia */
+.no-products {
+  margin-top: var(--esp-xxl);
+  text-align: center;
+  color: var(--cor-texto-3);
+  font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--esp-sm);
+    padding: var(--esp-xs);
+  }
+  
+  .loja-page h1 {
+    font-size: var(--font-xl);
+  }
+}

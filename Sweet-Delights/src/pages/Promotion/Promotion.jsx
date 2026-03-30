@@ -2,54 +2,47 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import logo from "../../assets/logo.png"
 import "./Promotion.css"
 import { useCart } from "../../context/CartContext";
+import { useEffect, useState } from "react";
 
- const Promotion=()=> {
+import { getPromocoes } from "../../api/productApi";
+import BackButton from "../../components/BackButton/BackButton";
+import ScrollContainer from "../../components/ScrollContainer/ScrollContainer";
 
-    const {addToCart}= useCart();
+const Promotion = () => {
 
-  const productPromotion = [
-    {
-      id: 1,
-      name: "Bolo de Chocolate",
-      price: 19.90,
-      oldPrice: 29.90,
-      image: logo
-    },
-    {
-      id: 2,
-      name: "Cupcake",
-      price: 6.90,
-      oldPrice: 9.90,
-      image: logo
-    },
-    {
-      id: 3,
-      name: "Donut",
-      price: 4.50,
-      oldPrice: 7.00,
-      image: logo
-    }
-  ];
+  const { addToCart } = useCart();
+  const [produtos, setProdutos] = useState([]);
 
-  
+  useEffect(() => {
+    getPromocoes().then(setProdutos)
+
+  }, [])
+
   return (
     <div className="promocoes-page">
-
+       <div style={{ width: '100%', maxWidth: '1200px' }}>
+                <BackButton variant="2" />
+            </div>
       <h1>🔥 Promoções</h1>
 
-      <div className="products-grid">
-        {productPromotion.map((produto) => (
-          <ProductCard
-            key={produto.id}
-            image={produto.image}
-            name={produto.name}
-            oldPrice={produto.oldPrice}
-            price={produto.price}
-            onAdd={() => addToCart(produto)}
-          />
-        ))}
-      </div>
-
+      {produtos.length > 0 ? (
+        <ScrollContainer>
+          {produtos.map((produto) => (
+            <ProductCard
+              key={produto.id}
+              id={produto.id}
+              image={produto.image}
+              name={produto.name}
+              oldPrice={produto.oldPrice}
+              price={produto.price}
+              onAdd={() => addToCart(produto)}
+            />
+          ))}
+        </ScrollContainer>
+          
+      ) : (
+        <p className="no-promotions">Fique atento! Novas ofertas em breve... 🍰</p>
+      )}
     </div>
   );
 }

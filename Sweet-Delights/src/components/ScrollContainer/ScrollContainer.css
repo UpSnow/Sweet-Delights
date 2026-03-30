@@ -1,0 +1,44 @@
+.scroll-section {
+  width: 100%;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.scroll-title {
+  margin: 25px 0 15px 20px;
+  color: var(--cor-secundaria);
+  font-weight: var(--peso-bold);
+  font-size: var(--font-lg);
+}
+
+.scroll-wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 20px; /* Importante para o efeito de 'subida' do seu ProductCard */
+  
+  /* Comportamento de Scroll */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  
+  /* Garante que o scroll funcione no toque */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Forçar os filhos (Cards) a não encolherem */
+.scroll-wrapper > * {
+  flex-shrink: 0;
+}
+
+/* Customização da Barra (opcional - você já tem uma legal) */
+.scroll-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.scroll-wrapper::-webkit-scrollbar-thumb {
+  background: var(--cor-botao);
+  border-radius: 10px;
+}
+.scroll-wrapper::-webkit-scrollbar-track {
+  background: transparent; /* Fica invisível se não estiver usando */
+}

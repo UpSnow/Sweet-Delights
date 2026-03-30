@@ -10,6 +10,8 @@ import { formatCep } from "../../utils/validarEndereco/masksAddress";
 import { buscarCEP } from "../../api/cep"
 import BackButton from "../../components/BackButton/BackButton";
 
+
+import "./Address.css"
 const Address = () => {
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ const Address = () => {
   const [loadingCep, setLoadingCep] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const debounceRef = useRef(null); 
+  const debounceRef = useRef(null);
 
   const cepValido = form.cep.replace(/\D/g, "").length === 8;
 
@@ -122,93 +124,113 @@ const Address = () => {
     }
 
     setSuccess(true);
-    }
+  }
 
   useEffect(() => {
-      if (success) {
-        const timer = setTimeout(() => {
-          navigate("/checkout"); // muda a rota aqui
-        }, 2000);
-
-        return () => clearTimeout(timer);
-      }
-    }, [success, navigate]);
-
     if (success) {
-      return (
-        <div>
-          <h1>✅ Endereço salvo!</h1>
-          <p>Redirecionando...</p>
-        </div>
-      );
+      const timer = setTimeout(() => {
+        navigate("/checkout"); // muda a rota aqui
+      }, 2000);
+
+      return () => clearTimeout(timer);
     }
-  
+  }, [success, navigate]);
+
+  if (success) {
+    return (
+      <div className="success-container">
+        <div className="success-card">
+          <h1>✅ Endereço salvo!</h1>
+          <p>Redirecionando para o pagamento...</p>
+
+          {/* Opcional: Um loader fofinho com as cores do seu tema */}
+          <div className="loader-dots">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
 
   return (
-    <div>
-      <BackButton variant="2"/>
-      <h1>Endereço</h1>
+    <div className="address-container">
+      <div className="address-card">
+        <BackButton variant="2" />
+        <h1>Endereço</h1>
 
-      <form onSubmit={handleSubmit}>
 
-        <Input
-          name="cep"
-          placeholder="CEP"
-          value={form.cep}
-          onChange={handleChange}
-          erro={erros.cep}
-        />
+        <form onSubmit={handleSubmit} className="address-form">
 
-        {loadingCep && <p>Buscando CEP...</p>}
+          <Input
+            name="cep"
+            placeholder="CEP"
+            value={form.cep}
+            onChange={handleChange}
+            erro={erros.cep}
+          />
 
-        <Input
-          name="rua"
-          placeholder="Rua"
-          value={form.rua}
-          onChange={handleChange}
-          erro={erros.rua}
-        />
+          {loadingCep && <p>Buscando CEP...</p>}
 
-        <Input
-          name="numero"
-          placeholder="Número"
-          value={form.numero}
-          onChange={handleChange}
-          erro={erros.numero}
-        />
+          <Input
+            name="rua"
+            placeholder="Rua"
+            value={form.rua}
+            onChange={handleChange}
+            erro={erros.rua}
+          />
 
-        <Input
-          name="bairro"
-          placeholder="Bairro"
-          value={form.bairro}
-          onChange={handleChange}
-          erro={erros.bairro}
-        />
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1px' }}>
 
-        <Input
-          name="cidade"
-          placeholder="Cidade"
-          value={form.cidade}
-          onChange={handleChange}
-          erro={erros.cidade}
-          readOnly={cepValido}
-        />
+            <Input style={{ width: "91px" }}
+              name="numero"
+              placeholder="Número"
+              value={form.numero}
+              onChange={handleChange}
+              erro={erros.numero}
+            />
 
-        <Input
-          name="estado"
-          placeholder="Estado"
-          value={form.estado}
-          onChange={handleChange}
-          erro={erros.estado}
-          readOnly={cepValido}
-        />
+            <Input style={{ width: "200px" }}
+              name="bairro"
+              placeholder="Bairro"
+              value={form.bairro}
+              onChange={handleChange}
+              erro={erros.bairro}
+            />
+          </div>
 
-        <Button type="submit">
-          Salvar endereço
-        </Button>
+          <Input
+            name="cidade"
+            placeholder="Cidade"
+            value={form.cidade}
+            onChange={handleChange}
+            erro={erros.cidade}
+            readOnly={cepValido}
+          />
 
-      </form>
-    </div>
+          <Input
+            name="estado"
+            placeholder="Estado"
+            value={form.estado}
+            onChange={handleChange}
+            erro={erros.estado}
+            readOnly={cepValido}
+          />
+
+          <div className="btn-save-address">
+            <Button type="submit">
+              Salvar endereço
+            </Button>
+
+          </div>
+        </form>
+
+
+      </div>
+
+    </div >
 
 
   )

@@ -1,52 +1,78 @@
 import { useParams } from "react-router-dom";
-import"./Details.css"
+import "./Details.css"
 import Button from "../../components/Button/Button";
 
 import { useCart } from "../../context/CartContext";
+import { getProdutoById } from "../../api/productApi";
+
+import { useState, useEffect } from "react";
+import BackButton from "../../components/BackButton/BackButton";
 
 
 
 const Details = () => {
-  const { id } = useParams(); // o que esse useParams faz?
+  const { id } = useParams(); // pega o id da URL
 
   const { addToCart } = useCart();
 
-  const produtos = [
-    {
-      id: 1,
-      name: "Bolo de Chocolate",
-      price: 20,
-      description: "Delicioso bolo com cobertura cremosa",
-      image: "/images/bolo.jpg",
-    },
-    {
-      id: 2,
-      name: "Cupcake",
-      price: 8,
-      description: "Cupcake fofinho com recheio",
-      image: "/images/cupcake.jpg",
-    },
-  ];
+  const [produto, setProduto] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState(null);
 
-  const produto = produtos.find((p) => p.id === Number(id)); // ele só da certo de encontrar um com id igual é iiso?
+  useEffect(() => {
+    const fetchProduto = async () => {
+      try {
+        const data = await getProdutoById(id);
+        setProduto(data);
+      } catch (err) {
+        setErro("Produto não encontrado");
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchProduto();
+  }, [id]);
 
-  if (!produto) return <p>Produto não encontrado</p>;
+  // 🔄 loading
+  if (loading) return <p>Carregando...</p>;
+
+  // ❌ erro
+  if (erro) return <p>{erro}</p>;
 
   return (
     <div className="details-page">
+      <div style={{ width: '100%' }}>
+        <BackButton variant="2" />
+      </div>
 
-      <img src={produto.image} alt={produto.name} />
+      <div className="details-container">
+        {/* Lado Esquerdo: Imagem */}
+        <div className="details-image">
+          <img src={produto.image} alt={produto.name} />
+        </div>
 
-      <h1>{produto.name}</h1>
+        {/* Lado Direito: Informações */}
+        <div className="details-info">
+          <h1>{produto.name}</h1>
 
-      <p>{produto.description}</p>
+          <div className="details-meta">
+            <span>⭐ {produto.rating}</span>
+            <span>📦 Estoque: {produto.stock}</span>
+          </div>
 
-      <h2>R$ {produto.price.toFixed(2)}</h2>
+          <p className="details-description">{produto.description}</p>
 
-      <Button onClick={() => addToCart(produto)}>Adicionar ao carrinho</Button>
+          <h2 className="details-price">R$ {produto.price.toFixed(2)}</h2>
 
+          <div style={{ width: '100%', maxWidth: '300px' }}>
+            <Button onClick={() => addToCart(produto)}>
+              Adicionar ao carrinho
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 export default Details

@@ -51,7 +51,7 @@ const LayoutPage = () => {
                 {/* User Buttons */}
                 <div className="layout-page-user-buttons">
                     <Button
-                        icon={<FaUserCircle />}
+
                         onClick={handleUserClick}
                         variant="primary"
                     >
@@ -63,6 +63,14 @@ const LayoutPage = () => {
                     <Button icon={<FaBasketShopping />} onClick={() => navigate('/carrinho')} variant="secondary">
                         | {totalItems} Itens
                     </Button>
+                    {isAuthenticated ? (
+                        <Link to="/perfil" className="profile-icon-link">
+                            <div className="profile-icon-container">
+                                <FaUserCircle />
+                            </div>
+                        </Link>
+                    ) : null}
+
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
-import "./Checkout"
-import {  useNavigate } from "react-router-dom";
+import "./Checkout.css"
+import { useNavigate } from "react-router-dom";
 
 import Input from "../../components/Input/Input"
 import Button from "../../components/Button/Button"
@@ -30,15 +30,15 @@ const Checkout = () => {
 
     const navigate = useNavigate()
 
-     useEffect(() => { // preciso que me explique essa parte e como funciona
-    if (success) {
-      const timer = setTimeout(() => {
-        navigate("/");
-      }, 3000);
+    useEffect(() => { // preciso que me explique essa parte e como funciona
+        if (success) {
+            const timer = setTimeout(() => {
+                navigate("/");
+            }, 3000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [success]);
+            return () => clearTimeout(timer);
+        }
+    }, [success]);
 
 
     function handleChange(e) { // preciso entender como a logica funciona, ja que passsamos no onChange
@@ -101,9 +101,12 @@ const Checkout = () => {
     }
     if (success) {// a logica é se success for true jogo uma mensagem de sucesso ?
         return (
-            <div className="">
-                <h1>✅ Pagamento aprovado!</h1>
-                <p>Seu pedido foi realizado com sucesso 🎉</p>
+            <div className="checkout-page">
+                <div className="checkout-card payment-success">
+                    <h1>✅ Pagamento aprovado!</h1>
+                    <p>Seu pedido foi realizado com sucesso 🎉</p>
+                    {/* Aqui você poderia colocar um botão "Voltar para Loja" */}
+                </div>
             </div>
         );
     }
@@ -112,55 +115,57 @@ const Checkout = () => {
 
 
     return (
-        <div className="">
-            <BackButton variant="2"/>
-            <h1>Checkout</h1>
+        <div className="checkout-page">
+            <div className="checkout-card">
+                <BackButton variant="2" />
+                <h1>Checkout</h1>
+                <div className="checkout-total">
+                    Total: R$ {total.toFixed(2)}
+                </div>
 
-            <h3>Total: R$ {total.toFixed(2)}</h3>
+                <form onSubmit={handleSubmit} className="checkout-form">
+                    <Input
+                        label="Nome no cartão"
+                        name="name"
+                        placeholder="Como está no cartão"
+                        value={dados.name}
+                        onChange={handleChange}
+                        erro={erros.name}
+                    />
 
-            <form onSubmit={handleSubmit}>
-                <Input
+                    <Input
+                        label="Número do cartão"
+                        name="cardNumber"
+                        placeholder="0000 0000 0000 0000"
+                        value={dados.cardNumber}
+                        onChange={handleChange}
+                        erro={erros.cardNumber}
+                    />
 
-                    name="name"
-                    placeholder="Nome no cartão"
-                    value={dados.name}
-                    onChange={handleChange}
-                    erro={erros.name}
-                    required
+                    <div className="input-row">
+                        <Input style ={{width: "135px"}}
+                            label="Validade"
+                            name="expiry"
+                            placeholder="MM/AA"
+                            value={dados.expiry}
+                            onChange={handleChange}
+                            erro={erros.expiry}
+                        />
+                        <Input style ={{width: "135px"}}
+                            label="CVV"
+                            name="cvv"
+                            placeholder="123"
+                            value={dados.cvv}
+                            onChange={handleChange}
+                            erro={erros.cvv}
+                        />
+                    </div>
 
-                />
-
-               
-
-                <Input
-                    name="cardNumber"
-                    placeholder="Número do cartão"
-                    value={dados.cardNumber}
-                    onChange={handleChange}
-                    erro={erros.cardNumber}
-                />
-                <Input
-                    name="expiry"
-                    placeholder="Validade (MM/AA)"
-                    value={dados.expiry}
-                    onChange={handleChange}
-                    erro={erros.expiry}
-                />
-
-                <Input
-                    name="cvv"
-                    placeholder="CVV"
-                    value={dados.cvv}
-                    onChange={handleChange}
-                    erro={erros.cvv}
-                />
-
-                <Button variant="secondary" type="submit" disabled={loading}>  {/* Para que server o disabled? */}
-                    {loading ? "Processando....." : "Paga"}
-                </Button>
-
-
-            </form>
+                    <Button variant="secondary" type="submit" disabled={loading}>
+                        {loading ? "Processando....." : "Pagar Agora"}
+                    </Button>
+                </form>
+            </div>
         </div>
 
     );
