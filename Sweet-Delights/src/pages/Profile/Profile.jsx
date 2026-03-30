@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 
-import Input from "../../components/input/input";
+import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
 import BackButton from "../../components/BackButton/BackButton";
