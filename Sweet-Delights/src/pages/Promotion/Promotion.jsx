@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getPromocoes } from "../../api/productApi";
 import BackButton from "../../components/BackButton/BackButton";
 import ScrollContainer from "../../components/ScrollContainer/ScrollContainer";
+import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
 
 const Promotion = () => {
 
@@ -19,7 +20,9 @@ const Promotion = () => {
   }, [])
 
   return (
+    <MainScrollContainer height="calc(100vh - 40px)">
     <div className="promocoes-page">
+      
        <div style={{ width: '100%', maxWidth: '1200px' }}>
                 <BackButton variant="2" />
             </div>
@@ -43,7 +46,9 @@ const Promotion = () => {
       ) : (
         <p className="no-promotions">Fique atento! Novas ofertas em breve... 🍰</p>
       )}
+      
     </div>
+    </MainScrollContainer>
   );
 }
 

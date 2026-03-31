@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import { getCategorias } from "../../api/productApi";
 import BackButton from "../../components/BackButton/BackButton";
 
+
+import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
+
 const Categories = () => {
 
     const [categorias, setCategorias]= useState([])
@@ -22,6 +25,7 @@ const Categories = () => {
 
 return(
     <div className="categorias-page">
+        <MainScrollContainer height="calc(80vh - 40px)" >
         <div style={{ width: '100%', maxWidth: '1000px' }}>
             <BackButton variant="2"/>
         </div>
@@ -45,6 +49,7 @@ return(
             ))}
 
         </div>
+        </MainScrollContainer>
 
 
     </div>

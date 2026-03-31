@@ -4,7 +4,9 @@ import { useCart } from "../../context/CartContext";
 import BackButton from "../../components/BackButton/BackButton";
 import { getProdutos } from "../../api/productApi";
 import { useState, useEffect } from "react";
-import "./Loja.css"; // Não esqueça do import!
+import "./Loja.css"; 
+
+import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer"
 
 const Loja = () => {
     const { categoria } = useParams();
@@ -20,7 +22,9 @@ const Loja = () => {
     );
 
     return (
+        
         <div className="loja-page">
+            <MainScrollContainer height="calc(80vh - 40px)" >
             <div style={{ width: '100%', maxWidth: '1200px' }}>
                 <BackButton variant="2" />
             </div>
@@ -43,7 +47,9 @@ const Loja = () => {
             ) : (
                 <p className="no-products">Nenhum doce encontrado nesta categoria ainda... 🧁</p>
             )}
+            </MainScrollContainer>
         </div>
+        
     );
 };
 

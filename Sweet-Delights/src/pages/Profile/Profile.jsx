@@ -105,9 +105,10 @@ const Profile = () => {
     }
 
     return (
-        <MainScrollContainer height="calc(100vh - 40px)">
-            <div className="profile-page">
-                <div className="profile-card">
+
+        <div className="profile-page">
+            <div className="profile-card">
+                <MainScrollContainer height="calc(80vh - 40px)">
                     <div className="profile-header">
                         <div className="avatar-circle">
                             {user?.nome?.charAt(0).toUpperCase()}
@@ -158,15 +159,15 @@ const Profile = () => {
                             />
                         </div>
                         <div className="input-group">
-                        <Input
-                            label="Confirmar Senha"
-                            name="confirmarSenha"
-                            type="password"
-                            value={form.confirmarSenha}
-                            onChange={handleChange}
-                            disabled={!isEditing}
-                            erro={erros.confirmarSenha}
-                        />
+                            <Input
+                                label="Confirmar Senha"
+                                name="confirmarSenha"
+                                type="password"
+                                value={form.confirmarSenha}
+                                onChange={handleChange}
+                                disabled={!isEditing}
+                                erro={erros.confirmarSenha}
+                            />
                         </div>
                         <div className="profile-actions">
                             {!isEditing ? (
@@ -197,10 +198,10 @@ const Profile = () => {
                         <button onClick={handleDelete} className="btn-delete">Excluir minha conta</button>
                     </div>
 
-
-                </div>
+                </MainScrollContainer>
             </div>
-        </MainScrollContainer>
+        </div>
+
     )
 
 
