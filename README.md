@@ -1,4 +1,3 @@
-Aqui está o código completo em **Markdown**. Você pode copiar o conteúdo abaixo e colar diretamente no seu arquivo `README.md` do GitHub.
 
 # 🍬 Sweet Delights - E-commerce de Doces Artesanais
 
