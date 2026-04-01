@@ -63,8 +63,9 @@ O projeto foi testado exaustivamente em diferentes resoluções:
 
 ## 🔗 Links
 
-* 💻 **Deploy da Aplicação:** [Sweet-Delights](https://sweet-delights-wwni.vercel.app)
-* ⚙️ **API no Render:** [Sweet-Delights-API]( https://sweet-delights-api.onrender.com )
+* 💻 **Deploy da Aplicação:** [Acesse a Sweet Delights aqui](https://sweet-delights-up-snow.vercel.app)
+* ⚙️ **API no Render:** [Link da API](https://sweet-delights-api.onrender.com)
+* 📁 **Repositório:** [github.com/UpSnow/Sweet-Delights](https://github.com/UpSnow/Sweet-Delights)
 
 ---
 
