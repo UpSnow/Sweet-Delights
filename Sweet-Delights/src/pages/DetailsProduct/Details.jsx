@@ -10,6 +10,7 @@ import BackButton from "../../components/BackButton/BackButton";
 
 import Loading from "../../components/Loading/Loading";
 import ErrorState from "../../components/ErrorState/ErrorState";
+import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
 
 const Details = () => {
   const { id } = useParams(); // pega o id da URL
@@ -57,6 +58,7 @@ const Details = () => {
         return <Loading/>
     } 
   return (
+    
     <div className="details-page">
       <div style={{ width: '100%', maxWidth: '1000px'}}>
         <BackButton variant="2" />
@@ -89,6 +91,7 @@ const Details = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 export default Details
