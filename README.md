@@ -12,7 +12,7 @@ O **Sweet Delights** é uma aplicação front-end moderna de e-commerce desenvol
 * **Roteamento:** 🛣️ React Router Dom
 * **Estilização:** 🎨 CSS3 Avançado (Unidades de Viewport Modernas: `dvh`, `dvw`)
 * **Persistência:** 💾 LocalStorage API
-* **Consumo de Dados:** 🔗 Axios (Consumindo Fake API JSON)
+* **Consumo de Dados:** 🌐 Fetch API (Consumo de dados assíncronos de Fake API JSON)
 * **Deploy:** ☁️ Vercel (Front-end) & Render (Back-end)
 
 ---
@@ -30,7 +30,7 @@ Dados cruciais como o carrinho de compras precisavam ser acessíveis em qualquer
 ### 3. Experiência do Usuário (UX) e Resiliência
 APIs em planos gratuitos (como no Render) possuem o efeito de *Cold Start* (demora para acordar no primeiro acesso).
 * **Solução:** Desenvolvimento de componentes de **Loading** e **ErrorState** personalizados. Se a API falhar ou demorar, o usuário recebe um feedback visual amigável com a opção de "Tentar Novamente", evitando telas brancas ou carregamentos infinitos.
-
+* **Solução:** Implementação de `fetch` com blocos `try/catch/finally` para gerenciar estados de Loading e ErrorState personalizados.
 ---
 
 ## 📱 Responsividade de Alta Fidelidade
