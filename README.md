@@ -47,7 +47,7 @@ O projeto foi testado exaustivamente em diferentes resoluções:
 
 1. **Clone o repositório:**
  
-   git clone [ https://github.com/UpSnow/Sweet-Delights.git ]
+   git clone [ https://github.com/UpSnow/Sweet-Delights.git ]( https://github.com/UpSnow/Sweet-Delights.git )
  
 
 2. **Instale as dependências:**
@@ -64,8 +64,8 @@ O projeto foi testado exaustivamente em diferentes resoluções:
 
 ## 🔗 Links
 
-* 💻 **Deploy da Aplicação:** [ https://sweet-delights-wwni.vercel.app ]
-* ⚙️ **API no Render:** [ https://sweet-delights-api.onrender.com ]
+* 💻 **Deploy da Aplicação:** [Sweet-Delights](https://sweet-delights-wwni.vercel.app)
+* ⚙️ **API no Render:** [Sweet-Delights-API]( https://sweet-delights-api.onrender.com )
 
 ---
 
