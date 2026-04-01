@@ -20,14 +20,17 @@ function CartProduct() {
 
 
     return (
-        
-            <div className="cart-background">
+
+        <div className="cart-background">
 
 
-                <div className="cart-container">
-                    <BackButton variant="2"/>
-                    <MainScrollContainer height="calc(80vh - 40px)" >
-                    
+            <div className="cart-container">
+
+                <MainScrollContainer height="calc(80vh - 40px)" >
+                    <div style={{ width: '100%', maxWidth: '1200px' }}>
+                        <BackButton variant="2" />
+                    </div>
+
                     <h1>Carrinho</h1>
                     {cart.length === 0 ? (
                         <p className="empty-msg">Carrinho está vazio 🧁</p>
@@ -76,12 +79,12 @@ function CartProduct() {
 
                     )}
 
-                    </MainScrollContainer>
+                </MainScrollContainer>
 
 
-                </div>
             </div>
-       
+        </div>
+
 
     );
 };
