@@ -6,16 +6,57 @@ import { getProdutos } from "../../api/productApi";
 import { useState, useEffect } from "react";
 import "./Loja.css"; 
 
-import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer"
+import ScrollContaine from "../../components/ScrollContainer/ScrollContainer"
 
+
+import Loading from "../../components/Loading/Loading";
+import ErrorState from "../../components/ErrorState/ErrorState";
 const Loja = () => {
     const { categoria } = useParams();
     const [produtos, setProdutos] = useState([]);
     const { addToCart } = useCart();
 
-    useEffect(() => {
-        getProdutos().then(setProdutos);
-    }, []);
+     const [ loading,setLoading]= useState(true);
+     const [error, setError] = useState(false)
+
+
+    useEffect(()=>{
+
+        const loadAllData = async()=>{
+            try {
+                setError(false)
+                
+
+                const[resProdutos]= await Promise.all([
+                    getProdutos()
+                ]);
+                setProdutos(resProdutos)
+                
+            } catch (error) {
+                console.error("Erro ao buscar dados:", error);
+                setError(true)
+                
+            } finally{
+                setLoading(false)
+            }
+
+        }
+        loadAllData();
+
+       
+    },[])
+
+    if(error){
+        return(
+            <ErrorState
+             mensagem="Erro ao carregar os doces" 
+            onRetry={() => window.location.reload()} />
+        )
+    }
+
+    if(loading){
+        return <Loading/>
+    } 
 
     const productFiltered = produtos.filter(
         (p) => p.category.toLowerCase() === categoria.toLowerCase()
@@ -24,7 +65,7 @@ const Loja = () => {
     return (
         
         <div className="loja-page">
-            <MainScrollContainer height="calc(80vh - 40px)" >
+            
             <div style={{ width: '100%', maxWidth: '1200px' }}>
                 <BackButton variant="2" />
             </div>
@@ -32,7 +73,9 @@ const Loja = () => {
             <h1>{categoria}</h1>
 
             {productFiltered.length > 0 ? (
+                
                 <div className="products-grid">
+                    <ScrollContaine>
                     {productFiltered.map((produto) => (
                         <ProductCard
                             key={produto.id}
@@ -43,12 +86,15 @@ const Loja = () => {
                             onAdd={() => addToCart(produto)}
                         />
                     ))}
+                    </ScrollContaine>
                 </div>
+                
             ) : (
                 <p className="no-products">Nenhum doce encontrado nesta categoria ainda... 🧁</p>
             )}
-            </MainScrollContainer>
+           
         </div>
+         
         
     );
 };

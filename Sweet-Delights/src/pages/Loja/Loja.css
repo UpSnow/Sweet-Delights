@@ -1,37 +1,42 @@
 /* Loja.css */
 
 .loja-page {
-  padding: var(--esp-xl);
+  padding: var(--esp-xl) 0; /* Removido padding lateral para o scroll encostar nas bordas */
   background-color: var(--cor-fundo);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Alinhado à esquerda para o título não flutuar no meio sozinho */
+  width: 100%;
+ 
+  min-height: 100vh;
 }
 
 .loja-page h1 {
   color: var(--cor-secundaria);
   font-size: var(--font-xxl);
-  margin: var(--esp-lg) 0;
+  margin: var(--esp-lg) 0 var(--esp-lg) 20px; /* Margem à esquerda para alinhar com os cards */
   font-weight: var(--peso-bold);
-  text-transform: capitalize; /* Garante que 'bolos' vire 'Bolos' */
-  text-align: center;
+  text-transform: capitalize;
 }
 
-/* Grid de Produtos */
+/* Transformando o Grid em Container de Scroll Horizontal */
 .products-grid {
-  display: grid;
-  /* Cria colunas responsivas que se ajustam sozinhas */
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  display: flex; /* Mudamos de grid para flex */
+  flex-direction: row;
   gap: var(--esp-lg);
   width: 100%;
-  max-width: 1200px;
-  padding: var(--esp-md);
-  justify-items: center; /* Centraliza o card dentro da célula do grid */
+  padding: 10px 20px 30px 20px; /* Espaço para a sombra do card não cortar */
+  
+  
+  
+  
 }
 
-/* Estilo para quando a categoria está vazia */
+
+
+
 .no-products {
+  width: 100%;
   margin-top: var(--esp-xxl);
   text-align: center;
   color: var(--cor-texto-3);
@@ -40,13 +45,13 @@
 
 /* Responsividade */
 @media (max-width: 600px) {
-  .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: var(--esp-sm);
-    padding: var(--esp-xs);
-  }
-  
   .loja-page h1 {
     font-size: var(--font-xl);
+    margin-left: 15px;
+  }
+  
+  .products-grid {
+    gap: var(--esp-sm);
+    padding-left: 15px;
   }
 }

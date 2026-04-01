@@ -8,7 +8,8 @@ import { getProdutoById } from "../../api/productApi";
 import { useState, useEffect } from "react";
 import BackButton from "../../components/BackButton/BackButton";
 
-
+import Loading from "../../components/Loading/Loading";
+import ErrorState from "../../components/ErrorState/ErrorState";
 
 const Details = () => {
   const { id } = useParams(); // pega o id da URL
@@ -17,29 +18,44 @@ const Details = () => {
 
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [erro, setErro] = useState(null);
+  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const fetchProduto = async () => {
-      try {
-        const data = await getProdutoById(id);
-        setProduto(data);
-      } catch (err) {
-        setErro("Produto não encontrado");
-      } finally {
-        setLoading(false);
-      }
-    };
+   useEffect(()=>{
 
-    fetchProduto();
-  }, [id]);
+        const loadAllData = async()=>{
+            try {
+                setError(false)
+                
+                const[resProdutosById]= await Promise.all([
+                    getProdutoById(id)
+                ]);
+                setProduto(resProdutosById)
+                
+            } catch (error) {
+                console.error("Erro ao buscar dados:", error);
+                setError(true)
+                
+            } finally{
+                setLoading(false)
+            }
 
-  // 🔄 loading
-  if (loading) return <p>Carregando...</p>;
+        }
+        loadAllData();
 
-  // ❌ erro
-  if (erro) return <p>{erro}</p>;
+       
+    },[])
 
+    if(error){
+        return(
+            <ErrorState
+             mensagem="Erro ao carregar os doces" 
+            onRetry={() => window.location.reload()} />
+        )
+    }
+
+    if(loading){
+        return <Loading/>
+    } 
   return (
     <div className="details-page">
       <div style={{ width: '100%', maxWidth: '1000px'}}>

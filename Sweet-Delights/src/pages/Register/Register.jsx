@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { validarCampo, validarFormulario } from "../../utils/validarFormulario";
 
 import { useAuth } from "../../context/AuthContext";
+import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
 
 const Register = () => {
 
@@ -86,6 +87,7 @@ const Register = () => {
   return (
 
     <div>
+      <MainScrollContainer>
       <BackButton/>
     
     <LayoutStripes image={Logo} title="Cadastro">
@@ -150,6 +152,7 @@ const Register = () => {
         </Link >
       </p>
     </LayoutStripes>
+    </MainScrollContainer>
     </div>
   );
 }

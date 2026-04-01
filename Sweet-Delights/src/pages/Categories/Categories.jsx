@@ -2,11 +2,13 @@ import { useNavigate, } from "react-router-dom";
 import "./Categories.css";
 
 import { useState, useEffect } from "react";
-import { getCategorias } from "../../api/productApi";
+import {  getCategorias } from "../../api/productApi";
 import BackButton from "../../components/BackButton/BackButton";
 
 
 import MainScrollContainer from "../../components/MainScrollContainer/MainScrollContainer";
+import Loading from "../../components/Loading/Loading";
+import ErrorState from "../../components/ErrorState/ErrorState";
 
 const Categories = () => {
 
@@ -14,12 +16,45 @@ const Categories = () => {
 
     const navigate = useNavigate();
 
+    const [ loading,setLoading]= useState(true);
+     const [error, setError] = useState(false)
+
 
     useEffect(()=>{
 
-        getCategorias().then(setCategorias)
+        const loadAllData = async()=>{
+            try {
+                setError(false)
+                const[resCategorias]= await Promise.all([
+                    getCategorias()
+                ]);
+                setCategorias(resCategorias)
+                
+            } catch (error) {
+                console.error("Erro ao buscar dados:", error);
+                setError(true)
+                
+            } finally{
+                setLoading(false)
+            }
+
+        }
+        loadAllData();
+
+       
     },[])
 
+    if(error){
+        return(
+            <ErrorState
+             mensagem="Erro ao carregar os doces" 
+            onRetry={() => window.location.reload()} />
+        )
+    }
+
+    if(loading){
+        return <Loading/>
+    } 
 
    
 

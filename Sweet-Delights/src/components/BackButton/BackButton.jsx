@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./BackButton.css"
 import { FaArrowLeft } from "react-icons/fa";
- const BackButton = ({variant}) => {
+ const BackButton = ({variant, className}) => {
     
     const navigate = useNavigate();
     const location = useLocation();
@@ -19,7 +19,7 @@ import { FaArrowLeft } from "react-icons/fa";
     };
 
     return (
-        <Button onClick={handleBack} className={`btn-voltar btn-voltar--${variant}`} icon={<FaArrowLeft/>}>
+        <Button onClick={handleBack} className={`btn-voltar btn-voltar--${variant} ${className}`} icon={<FaArrowLeft/>}>
         Voltar
         </Button>
     );

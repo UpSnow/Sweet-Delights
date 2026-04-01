@@ -108,7 +108,10 @@ const Profile = () => {
 
         <div className="profile-page">
             <div className="profile-card">
+                
                 <MainScrollContainer height="calc(80vh - 40px)">
+                    <BackButton variant="2" className="back-bnt"/>
+                    
                     <div className="profile-header">
                         <div className="avatar-circle">
                             {user?.nome?.charAt(0).toUpperCase()}
