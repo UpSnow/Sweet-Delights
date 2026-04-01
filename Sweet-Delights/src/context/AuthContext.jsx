@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
 
     const updateUser = useCallback((updatedData) =>{ 
         try{
-            const allUsers = JSON.parse(localStorage.getItem("users") || []);
+            const allUsers = JSON.parse(localStorage.getItem("users")) || [];
 
             if (updatedData.email !== user.email) {
             const emailExists = allUsers.some(u => u.email === updatedData.email);

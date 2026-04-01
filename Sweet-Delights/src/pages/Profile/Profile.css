@@ -132,7 +132,10 @@
   background-color: var(--cor-backgroundDetails);
   color: white;
 }
-
+.back-bnt{
+  width: 100%;
+  max-width: 110px;
+}
 hr {
   border: 0;
   border-top: 1px solid var(--cor-detalhe-2);

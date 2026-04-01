@@ -102,3 +102,76 @@
     display: block;
     object-fit: contain;
 }
+/* --- RESPONSIVIDADE --- */
+
+/* 1. Ajuste para Tablets (Até 850px) */
+@media (max-width: 850px) {
+    .layout-page-header {
+        padding: 0.5rem;
+    }
+
+    .layout-page-menu {
+        gap: 0.8rem; /* Diminui o espaço entre links */
+    }
+
+    .layout-page-logo p {
+        font-size: 0.9rem; /* Diminui o nome da marca */
+    }
+}
+
+/* 2. Ajuste para Celulares (Até 768px) */
+@media (max-width: 768px) {
+    .layout-page-header {
+        flex-wrap: wrap; /* Permite quebrar linha */
+        justify-content: space-between;
+    }
+
+    /* Move o menu de links para uma linha de baixo para não apertar os botões */
+    .layout-page-menu {
+        order: 3; 
+        width: 100%; 
+        justify-content: center;
+        padding: 0.8rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 0.3rem;
+        gap: 1.5rem;
+    }
+
+    .layout-page-logo img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .layout-page-user-buttons {
+        gap: 0.3rem;
+    }
+
+    /* Esconde o texto do carrinho no mobile, deixa só o ícone e número se preferir */
+    /* Ou apenas diminui o botão */
+    .layout-page-user-buttons button {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* 3. Ajuste para Telas Muito Pequenas (Até 480px) */
+@media (max-width: 480px) {
+    .layout-page-logo p {
+        display: none; /* Deixa apenas o desenho da logo para ganhar espaço */
+    }
+
+    .profile-icon-container {
+        width: 35px;
+        height: 35px;
+    }
+
+    .profile-icon-container svg {
+        font-size: 1.4rem;
+    }
+    
+    /* Faz a onda (Background) se comportar melhor */
+    .wave-container img {
+        object-fit: cover;
+        height: 100px; /* Limita a altura da onda no mobile */
+    }
+}
