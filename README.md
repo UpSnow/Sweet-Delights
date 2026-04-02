@@ -79,4 +79,4 @@ APIs em planos gratuitos possuem o efeito de *Cold Start*.
 
 ---
 
-Desenvolvido com ❤️ por [Seu Nome/UpSnow]
+Desenvolvido por [Arthur Cezar/UpSnow]
