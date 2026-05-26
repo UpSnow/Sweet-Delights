@@ -73,7 +73,7 @@ APIs em planos gratuitos possuem o efeito de *Cold Start*.
 
 ## 🔗 Links
 
-* 💻 **Deploy da Aplicação:** [Acesse a Sweet Delights aqui](https://sweet-delights-up-snow.vercel.app)
+* 💻 **Deploy da Aplicação:** [Acesse a Sweet Delights aqui](https://sweet-delights-wwni.vercel.app)
 * ⚙️ **API no Render:** [Link da API](https://sweet-delights-api.onrender.com)
 * 📁 **Repositório:** [github.com/UpSnow/Sweet-Delights](https://github.com/UpSnow/Sweet-Delights)
 
